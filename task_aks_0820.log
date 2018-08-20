@@ -1,0 +1,117 @@
+azureuser@aksvm:~$ ansible-playbook main.yml --extra-vars "{\"test\":\"test.yml\",\"resource_group\":\"ansible-aks-test01\"}"
+ [WARNING]: provided hosts list is empty, only localhost is available. Note
+that the implicit localhost does not match 'all'
+
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [create resource group] ***************************************************
+Please set a password for your new keyring: 
+Please confirm the password: 
+changed: [localhost]
+
+TASK [include_tasks] ***********************************************************
+included: /home/azureuser/test.yml for localhost
+
+TASK [Create an AKS instance (check mode)] *************************************
+Please enter password for encrypted keyring: 
+ [WARNING]: Azure API profile latest does not define an entry for
+ContainerServiceClient
+
+changed: [localhost]
+
+TASK [Check there is no AKS created] *******************************************
+Please enter password for encrypted keyring: 
+ok: [localhost]
+
+TASK [Check there is no AKS created] *******************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Create an AKS instance] **************************************************
+Please enter password for encrypted keyring: 
+changed: [localhost]
+
+TASK [Assert the AKS instance is well created] *********************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Get AKS fact] ************************************************************
+Please enter password for encrypted keyring: 
+ok: [localhost]
+
+TASK [Assert fact returns the created one] *************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Create an AKS instance (idempotent)] *************************************
+Please enter password for encrypted keyring: 
+ok: [localhost]
+
+TASK [Assert idempotent] *******************************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Upgrade the AKS instance] ************************************************
+Please enter password for encrypted keyring: 
+changed: [localhost]
+
+TASK [Assert the AKS instance is upgraded] *************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Scale the AKS instance agent count from 1 to 2] **************************
+Please enter password for encrypted keyring: 
+changed: [localhost]
+
+TASK [Assert the AKS instance is well scaled] **********************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Delete the AKS instance] *************************************************
+Please enter password for encrypted keyring: 
+changed: [localhost]
+
+TASK [Assert the AKS instance is well deleted] *********************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Delete the AKS instance (idempotent)] ************************************
+Please enter password for encrypted keyring: 
+ok: [localhost]
+
+TASK [Assert idempotent] *******************************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Get AKS fact] ************************************************************
+Please enter password for encrypted keyring: 
+ok: [localhost]
+
+TASK [Assert fact returns empty] ***********************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=22   changed=6    unreachable=0    failed=0
