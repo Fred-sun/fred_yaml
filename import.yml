@@ -1,0 +1,17 @@
+# call reset API to generalize VM
+  - name: Call REST API - VirtualMachines_Generalize
+    azure_rm_resource:
+      api_version: '2017-12-01'
+      method: POST
+      resource_group: "{{ resource_group }}"
+      provider: compute
+      resource_type: virtualmachines
+      resource_name: "{{ vm_name }}"
+      subresource:
+        - type: generalize
+        
+# use command to generalize VM
+- name: generalize the vm
+  command: "az vm generalize --resource-group {{ openshift_azure_resource_group_name }} --name {{ openshift_azure_vm_name }}"
+  
+  
