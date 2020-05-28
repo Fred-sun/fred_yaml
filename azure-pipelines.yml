@@ -2,13 +2,21 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+parameters:
+- name:
+  displayName: Python Version
+  type: str
+  default: python2.7
+  values:
+  - python3.5
+  - python3.6
+  - python3.7
 
 trigger:
 - master
 
 pool:
   vmImage: 'ubuntu-latest'
-
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
