@@ -2,16 +2,36 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+parameters:
+- name: PYTHON_VER
+  displayName: 'Python Version'
+  type: string
+  default: "2.7"
+  values:
+  - "2.7"
+  - "3.6"
+- name: ANSIBLE_VER
+  displayName: 'Ansible Version'
+  type: string
+  default: "2.9.0"
+  values:
+  - "2.9.0"
+  - "2.10.0"
 
 trigger:
 - master
 
 pool:
   vmImage: 'ubuntu-latest'
-
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+
+- script: echo ${{ parameters.PYTHON_VER }} and ${{ parameters.ANSIBLE_VER }}
+  displayName: 'Get predefine parameter'
+
+- script: echo Python${{ parameters.PYTHON_VER }} and ${{ parameters.ANSIBLE_VER }}
+  displayName: 'Get predefine parameter'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
