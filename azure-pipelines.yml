@@ -5,7 +5,7 @@
 parameters:
 - name:
   displayName: Python Version
-  type: str
+  type: string
   default: python2.7
   values:
   - python3.5
