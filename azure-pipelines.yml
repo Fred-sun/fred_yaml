@@ -6,18 +6,18 @@ parameters:
 - name: PYTHON_VER
   displayName: 'Python Version'
   type: string
-  default: python2.7
+  default: python2
   values:
-  - python3.5
-  - python3.6
-  - python3.7
+  - python3
+  - python4
+  - python5
 - name: ANSIBLE_VER
   displayName: 'Ansible Version'
   type: string
-  default: 2.9.0
+  default: 9
   values:
-  - 2.9.0
-  - 2.9.9
+  - 9
+  - 10
 
 trigger:
 - master
