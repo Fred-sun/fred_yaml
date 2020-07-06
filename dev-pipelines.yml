@@ -1,5 +1,5 @@
 schedules:
-- cron: "5 15 * * 1"
+- cron: "* 14 * * 1"
   displayName: 'Execute dev-pipeline every Wednesday' 
   branches:
     include:
