@@ -1,18 +1,4 @@
 parameters:
-- name: PYTHON_VER
-  displayName: 'Python Version'
-  type: string
-  default: "3.6"
-  values:
-    - "2.7"
-    - "3.6"
-- name: ANSIBLE_VER
-  displayName: 'Ansible Version'
-  type: string
-  default: "devel"
-  values:
-    - "2.9.0"
-    - "devel"
 
 schedules:
 - cron: "0 10 0 0 3"
@@ -28,12 +14,9 @@ pool:
 
 jobs:
   - job: A
-    - script: test.py
-      displayName: 'Running Tests'
-
-  - job: SendMail
-    dependsOn: 
-      - A
-    condition: failed()
     steps:
-      - script: sendmail.py
+      - bash: echo "A"
+  - job: B
+    steps:
+      - bash: echo "B"
+
