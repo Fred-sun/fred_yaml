@@ -1,7 +1,7 @@
 parameters:
 
 schedules:
-- cron: "0 10 0 0 3"
+- cron: '0 10 0 0 3'
   displayName: 'Execute dev-pipeline every Wednesday' 
   branches:
     - master
@@ -15,8 +15,8 @@ pool:
 jobs:
   - job: A
     steps:
-      - bash: echo "A"
+      - bash: echo 'A'
   - job: B
     steps:
-      - bash: echo "B"
+      - bash: echo 'B'
 
