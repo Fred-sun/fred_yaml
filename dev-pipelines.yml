@@ -1,6 +1,10 @@
 schedules:
-- cron: '0 10 0 0 3'
+- cron: "* 10 * * 3"
   displayName: 'Execute dev-pipeline every Wednesday' 
+  branches:
+    include:
+      - master
+      - release/*
   always: true
 
 trigger: none
