@@ -34,7 +34,7 @@ def Get_RG():
     get_item = 'az group list --subscription f64d4ee8-be94-457d-ba26-3fa6b6506cef --output json'
     ret = os.popen(get_item).readlines()
     reg = '"id": "/subscriptions/f64d4ee8-be94-457d-ba26-3fa6b6506cef/'
-        for resource in ret:
+    for resource in ret:
         if reg in resource:
             item = re.split(r'"|/',resource)[7]
             if item.startswith('sampletest'):
@@ -64,4 +64,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-            
