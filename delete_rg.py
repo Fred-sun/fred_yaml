@@ -31,7 +31,7 @@ def Get_RG():
     """ Get resource group list func """
 
     list_id = []
-    get_item = 'az group list --subscription f64d4ee8-be94-457d-ba26-3fa6b6506cef --output json'
+    get_item = '/usr/local/bin/az group list --subscription f64d4ee8-be94-457d-ba26-3fa6b6506cef --output json'
     ret = os.popen(get_item).readlines()
     reg = '"id": "/subscriptions/f64d4ee8-be94-457d-ba26-3fa6b6506cef/'
     for resource in ret:
@@ -46,7 +46,7 @@ def Delete_RG(key):
      """ Delete resource group func """
 
      success_flag = True
-     del_item = 'az group delete -y --name '
+     del_item = '/usr/local/bin/az group delete -y --name '
      print("The resource group :%s will be delete:"%key)
      try:
          os.system(del_item + key)
