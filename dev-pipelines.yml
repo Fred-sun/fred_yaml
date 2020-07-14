@@ -6,6 +6,17 @@ schedules:
       - master
       - release/*
   always: true
+- task: EmailReportPPE@1
+  inputs:
+    sendMailConditionConfig: 'Always'
+    subject: '[{environmentStatus}] {passPercentage} tests passed in $(Release.EnvironmentName) stage for $(Build.BuildNumber)'
+    toAddress: 'xiuxi.sun@qq.com'
+    defaultDomain: 'microsoft.com'
+    groupTestResultsBy: 'run'
+    includeCommits: true
+    maxTestFailuresToShow: '15'
+    includeOthersInTotal: false
+    usePreviousEnvironment: false
 
 trigger: none
 
