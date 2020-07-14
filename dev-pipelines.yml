@@ -6,18 +6,6 @@ schedules:
       - master
       - release/*
   always: true
-- task: EmailReportPPE@1
-  inputs:
-    sendMailConditionConfig: 'Always'
-    subject: '[{environmentStatus}] {passPercentage} tests passed in $(Release.EnvironmentName) stage for $(Build.BuildNumber)'
-    toAddress: 'xiuxi.sun@qq.com'
-    defaultDomain: 'microsoft.com'
-    groupTestResultsBy: 'run'
-    includeCommits: true
-    maxTestFailuresToShow: '15'
-    includeOthersInTotal: false
-    usePreviousEnvironment: false
-
 trigger: none
 
 pool:
@@ -30,4 +18,15 @@ jobs:
   - job: B
     steps:
       - bash: echo 'B'
+
+- task: EmailReportPPE@1
+  inputs:
+    sendMailConditionConfig: 'Always'
+    subject: '[{environmentStatus}] {passPercentage} tests passed in $(Release.EnvironmentName) stage for $(Build.BuildNumber)'
+    defaultDomain: 'microsoft.com'
+    groupTestResultsBy: 'run'
+    includeCommits: true
+    maxTestFailuresToShow: '15'
+    includeOthersInTotal: false
+    usePreviousEnvironment: false
 
