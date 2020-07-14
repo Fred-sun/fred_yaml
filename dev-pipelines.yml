@@ -18,7 +18,7 @@ jobs:
   - job: B
     steps:
       - bash: echo 'B'
-  - job: Send mail
+  - job: Sendmail
     dependsOn:
       - A
       - B
