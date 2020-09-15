@@ -1,0 +1,391 @@
+    1  cd /usr/local/lib/python3.6/dist-packages/azure/mgmt/
+    2  cd network/
+    3  cd v2019_06_01/models/
+    4  ls
+    5  vi _models_py3.py 
+    6  sudo apt update
+    7  python3
+    8  python
+    9  exit()
+   10  ls
+   11  pip3
+   12  sudo apt install python-pip
+   13  git status
+   14  git 
+   15  git config
+   16  git config --list
+   17  git config --global user.name Fred-sun
+   18  git config --dele user.emai 
+   19  git config --global user.email xiuxi.sun@qq.com
+   20  git config --list
+   21  git delete --global user.name Fred-sun
+   22  git config --unset  --global user.name Fred-sun
+   23  git config list
+   24  git config --list
+   25  git config --unset  --global user.emai
+   26  git config --list
+   27  git config --global user.name Fred-sun
+   28  ssh-keygen -t rsa -c "xiuxi.sun@qq.com"
+   29  ssh-keygen -t rsa -C "xiuxi.sun@qq.com"
+   30  ls
+   31  vi yes
+   32  rm yes*
+   33  ssh-keygen -t rsa -C "xiuxi.sun@qq.com"
+   34  vi .ssh/id_rsa.pub 
+   35  touch .git-credentials
+   36  git config --global credential.helper storeni
+   37  vi .ssh/id_rsa.pub 
+   38  git clone https://github.com/fred-sun/fred_yaml.git
+   39  cd fred_yaml/
+   40  ls
+   41  vi add.sh 
+   42  git status
+   43  git add *
+   44  gti commit -m "add new"
+   45  git commit -m "add new"
+   46  git push origin master 
+   47  vi 
+   48  vi ~/.gitconfig
+   49  cd ..
+   50  pip3
+   51  sudo apt install python3-pip
+   52  pip3
+   53  sudo pip3 install ansible[azure]
+   54  ansible-galaxy collection install azure.azcollection --force
+   55  git clone https://github.com/Fred-sun/ansible_collections_azure.git
+   56  cd ansible_collections_azure/
+   57  git branch -a
+   58  git checkout update_subnet_feature 
+   59  cd ..
+   60  ls
+   61  mkdir subnet
+   62  cd subnet/
+   63  cp /mnt/f/tasks.yml ./
+   64  ls
+   65  cd ..
+   66  az login
+   67  mkdir .azure
+   68  cp /mnt/f/credentials .azure/
+   69  sudo cp ansible_collections_azure/plugins/modules/azure_rm_subnet* .ansible/collections/ansible_collections/azure/azcollection/plugins/modules/
+   70  cd subnet/
+   71  ls
+   72  vi tasks.yml 
+   73  ansible-playbook  tasks.yml 
+   74  sudo pip3 install -r ~/ansible_collections_azure/requirements-azure.txt -I
+   75  ansible-playbook  tasks.yml 
+   76  vi tasks.yml 
+   77  ls
+   78  vi log.log 
+   79  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+   80  vi log.log 
+   81  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+   82  ls
+   83  vi log.log 
+   84  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2020_04_01/models/_models_py3.py 
+   85  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2020_04_01/operations/__init__.py 
+   86  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2020_04_01/operations/_subnets_operations.py 
+   87  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2020_04_01/models/_models_py3.py 
+   88  sudo vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/module_utils/azure_rm_common.py 
+   89  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2018_08_01/
+   90  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2018_08_01/models/subnet_py3.py.py 
+   91  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2018_08_01/models/subnet_py3.py 
+   92  sync
+   93  sudo vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/module_utils/azure_rm_common.py 
+   94  ansible-playbook  tasks.yml 
+   95  sudo vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+   96  vi log.log 
+   97  rm log.log 
+   98  sudo vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+   99  ansible-playbook  tasks.yml 
+  100  ansible-playbook  tasks.yml  -vvvv
+  101  rm log.log 
+  102  ansible-playbook  tasks.yml  -vvv
+  103  ls
+  104  vi log.log 
+  105  rm log.log 
+  106  ansible-playbook  tasks.yml  -vvv
+  107  vi log.log 
+  108  vi tasks.yml 
+  109  ansible-playbook  tasks.yml  -vvv:q
+  110  rm log.log 
+  111  ansible-playbook  tasks.yml  -vv
+  112  vi tasks.yml 
+  113  ansible-playbook  tasks.yml 
+  114  vi tasks.yml 
+  115  ansible-playbook  tasks.yml -t fred
+  116  ansible-playbook  tasks.yml 
+  117  vi tasks.yml 
+  118  ansible-playbook  tasks.yml -t fred01
+  119  vi tasks.yml 
+  120  ansible-playbook  tasks.yml -t fred01
+  121  ansible-playbook  tasks.yml -t fred01 -vvv
+  122  vi tasks.yml 
+  123  ansible-playbook  tasks.yml -t fred01 -vvv
+  124  :q
+  125  vi ../ansible_collections_azure/plugins/modules/azure_rm_subnet.py 
+  126  git status
+  127  ls
+  128  cp tasks.yml back.yml
+  129  vi tasks.yml 
+  130  cp ../ansible_collections_azure/tests/integration/targets/azure_rm_subnet/tasks/main.yml ./
+  131  vi tasks.yml 
+  132  vi main.yml 
+  133  vi ../ansible_collections_azure/plugins/modules/azure_rm_virtualnetwork.py 
+  134  vi main.yml 
+  135  ls
+  136  vi back.yml 
+  137  ansible-playbook back.yml -t fred
+  138  vi back.yml 
+  139  ansible-playbook back.yml -t fred
+  140  vi log.log 
+  141  ansible-playbook back.yml -t fred
+  142  ls
+  143  vi log.log 
+  144  rm log.log 
+  145  ansible-playbook back.yml -t fred
+  146  vi log.log 
+  147  rm log.log 
+  148  vi back.yml 
+  149  ansible-playbook  back.yml 
+  150  vi main.yml 
+  151  vi back.yml 
+  152  ansible-playbook tasks.yml -t fred02
+  153  vi back.yml 
+  154  ansible-playbook back.yml  -t fred02
+  155  vi tasks.yml 
+  156  ansible-playbook  tasks.yml 
+  157  vi tasks.yml 
+  158  ansible-playbook  tasks.yml -vvvv
+  159  vi tasks.yml 
+  160  vi main.yml 
+  161  ls
+  162  cp ~/.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py ./azure_rm_subnet.bac
+  163  sudo cp ../ansible_collections_azure/plugins/modules/azure_rm_subnet.py ~/.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/
+  164  vi tasks.yml 
+  165  ansible-playbook  tasks.yml 
+  166  vi tasks.yml 
+  167  ansible-playbook  tasks.yml 
+  168  vi main.yml 
+  169  vi tasks.yml 
+  170  ansible-playbook  tasks.yml 
+  171  vi tasks.yml 
+  172  vi main.yml 
+  173  ansible-playbook  tasks.yml -t fred
+  174  vi main.yml 
+  175  ansible-playbook  tasks.yml -t fred
+  176  vi main.yml 
+  177  ansible-playbook  tasks.yml -t fred
+  178  vi main.yml 
+  179  :q
+  180  vi main.yml 
+  181  ansible-playbook  tasks.yml -t fred
+  182  vi main.yml 
+  183  cp main.yml ../ansible_collections_azure/tests/integration/targets/azure_rm_subnet/tasks/main.yml 
+  184  cd ../ansible_collections_azure
+  185  git status
+  186  git diff
+  187  vi tests/integration/targets/azure_rm_subnet/tasks/main.yml 
+  188  git status
+  189  git diff
+  190  git add *
+  191  git commit -m "add test sample"
+  192  git push origin update_subnet_feature 
+  193  vi tests/integration/targets/azure_rm_subnet/aliases 
+  194  sync
+  195  vi plugins/modules/azure_rm_subnet.py 
+  196  git status
+  197  git diff
+  198  vi plugins/modules/azure_rm_subnet.py 
+  199  git status
+  200  git diff
+  201  git add *
+  202  git commit -m "fix sanity error"
+  203  git push origin update_subnet_feature 
+  204  vi plugins/modules/azure_rm_subnet.py 
+  205  git status
+  206  git diff
+  207  git add *
+  208  git commit -m "fix snaity error"
+  209  git push origin update_subnet_feature 
+  210  vi plugins/modules/azure_rm_subnet.py 
+  211  vi plugins/modules/azure_rm_subnet_info.py 
+  212  git status
+  213  git diff
+  214  vi plugins/modules/azure_rm_subnet_info.py 
+  215  vi plugins/modules/azure_rm_subnet.py 
+  216  git status
+  217  git diff
+  218  vi plugins/modules/azure_rm_subnet_info.py 
+  219  git status
+  220  git add *
+  221  git commit -m "fix sanity error"
+  222  git push origin update_subnet_feature 
+  223  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py 
+  224  sudo vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py 
+  225  cd subnet/
+  226  ls
+  227  ansible-playbook tasks.yml 
+  228  ls
+  229  vi log.log 
+  230  vi tasks.yml 
+  231  ansible-playbook tasks.yml 
+  232  vi tasks.yml 
+  233  rm log.log 
+  234  ansible-playbook tasks.yml 
+  235  ansible-playbook tasks.yml  -vvv
+  236  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py 
+  237  sudo vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py 
+  238  rm log.log 
+  239  ansible-playbook tasks.yml  -vvv
+  240  vi log.log 
+  241  sudo vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py 
+  242  sudo vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/models/_models_py3.py 
+  243  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  244  sduo vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  245  sudo  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  246  vi log.log 
+  247  sudo  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  248  rm log.log 
+  249  ansible-playbook tasks.yml  
+  250  vi log.log 
+  251  sudo  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  252  ansible-playbook tasks.yml  
+  253  sudo  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  254  vi log.log 
+  255  cd ..
+  256  cd ansible_collections_azure/
+  257  git status
+  258  vi plugins/modules/azure_rm_subnet.py 
+  259  git status
+  260  git diff
+  261  git add *
+  262  git commit -m "update new"
+  263  git push origin update_subnet_feature 
+  264  git config --list
+  265  git config --global credential.helper store
+  266  vi ../.git-credentials 
+  267  ls ../
+  268  ls ../ -a
+  269  ls
+  270  vi .gitignore 
+  271  ls
+  272  vi ../.git-credentials 
+  273  git config --global credential.helper store
+  274  git config --list
+  275  git push origin update_subnet_feature 
+  276  vi ../.git-credentials 
+  277  cd ..
+  278  cd fred_yaml/
+  279  ls
+  280  vi add.sh 
+  281  git add *
+  282  git commit -m "add new"
+  283  git push origin master 
+  284  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py
+  285  sudo vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py
+  286  sudo vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  287  vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py
+  288  sudo vi /usr/local/lib/python3.6/dist-packages/azure/mgmt/network/v2019_06_01/operations/_subnets_operations.py
+  289  sudo  vi ../.ansible/collections/ansible_collections/azure/azcollection/plugins/module_utils/azure_rm_common.py 
+  290  cd ..
+  291  cd ansible_collections_azure/
+  292  ls
+  293  vi plugins/module_utils/azure_rm_common.py 
+  294  git status
+  295  git diff
+  296  git add *
+  297  git commit -m "update api version"
+  298  git push origin update_subnet_feature 
+  299  cd ..
+  300  vi .ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  301  vi subnet/log.log 
+  302  vi .ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  303  cd ansible_collections_azure/
+  304  ls
+  305  vi plugins/modules/azure_rm_subnet.py 
+  306  git status
+  307  git diff
+  308  git add *
+  309  git commit -m "remove delegation"
+  310  git push origin update_subnet_feature 
+  311  vi plugins/modules/azure_rm_subnet_info.py 
+  312  git status
+  313  git diff
+  314  git difff
+  315  git diff
+  316  cd ..
+  317  ls
+  318  sudo vi .ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  319  vi ansible_collections_azure/plugins/modules/azure_rm_subnet.py 
+  320  sudo vi .ansible/collections/ansible_collections/azure/azcollection/plugins/modules/azure_rm_subnet.py 
+  321  sudo vi .ansible/collections/ansible_collections/azure/azcollection/plugins/module_utils/azure_rm_common.py 
+  322  vi subnet/back.yml 
+  323  npm --version
+  324  sudo pip3 install node
+  325  sudo pip3 install npm
+  326  npm --version
+  327  sudo apt  install npm
+  328  sudo apt-get update --fix-missing
+  329  npm --version
+  330  node --version
+  331  node -v
+  332  sudo pip3 install node -I
+  333  sudo pip3 install setuptools
+  334  sudo pip3 install setuptools -I
+  335  ssh azureuser@13.90.213.180
+  336  ls
+  337  npm --version
+  338  node -v
+  339  npm -v
+  340  suduo apt install nodejs 
+  341  sudo apt install nodejs 
+  342  sudo apt install npm 
+  343  npm -v
+  344  node -v
+  345  [9/3 下午3:13] Guopeng Lin
+  346  sudo node -v
+  347  sudo n stable
+  348  suod n stable
+  349  n stable
+  350  su[9/3 下午3:13] Guopeng Lin
+  351  sudo npm install -g n
+  352  npm -v
+  353  npm --version
+  354  npm --help
+  355  npm -l
+  356  sudo npm install npm -g
+  357  npm -v
+  358  npm --vresion
+  359  npm -l
+  360  [9/3 下午3:13] Guopeng Lin
+  361  sudo [9/3 下午3:13] Guopeng Lin
+  362  cd /usr/local/lib/
+  363  ls
+  364  sudo chmod 777 -R *
+  365  cd ~
+  366  ls
+  367  sudo npm install -g n
+  368  suod n stable
+  369  sudo n stable
+  370  npm -v
+  371  node -v
+  372  sudo npm install -g autorest 
+  373  autorest --help
+  374  node -v
+  375  npm -v
+  376  git clone https://github.com/Azure/azure-rest-api-specs.git
+  377  sudo npm install -g typescript
+  378  git clone https://github.com/GuopengLin/autorest.ansible.git
+  379  cd autorest.ansible/
+  380  npm install 
+  381  sudo npm install 
+  382  tsc -p .
+  383  autorest --ansible --use=./  ~/azure-rest-api-specs/specification/compute/resource-manager/readme.md  --log --ansible-output-folder=./tmp
+  384  git status
+  385  git diff
+  386  history
+  387  cd ..
+  388  mkdir tmp
+  389  cd autorest.ansible/
+  390  autorest --ansible --use=./  ~/azure-rest-api-specs/specification/compute/resource-manager/readme.md  --log --ansible-output-folder=../tmp
+  391  history > ../history.log

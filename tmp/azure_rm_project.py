@@ -1,0 +1,300 @@
+#!/usr/bin/python
+#
+# Copyright (c) 2020 GuopengLin, (@t-glin)
+#
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
+
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
+
+
+DOCUMENTATION = '''
+---
+module: azure_rm_project
+version_added: '2.9'
+short_description: Manage Azure Project instance.
+description:
+  - 'Create, update and delete instance of Azure Project.'
+options:
+  resource_group_name:
+    description:
+      - Name of the resource group within the Azure subscription.
+    required: true
+    type: str
+  root_resource_name:
+    description:
+      - Name of the Team Services account.
+    required: true
+    type: str
+  resource_name:
+    description:
+      - Name of the Team Services project.
+    required: true
+    type: str
+  validating:
+    description:
+      - This parameter is ignored and should be set to an empty string.
+    type: str
+  location:
+    description:
+      - Resource location.
+    type: str
+  properties:
+    description:
+      - Key/value pair of resource properties.
+    type: dictionary
+  state:
+    description:
+      - Assert the state of the Project.
+      - >-
+        Use C(present) to create or update an Project and C(absent) to delete
+        it.
+    default: present
+    choices:
+      - absent
+      - present
+extends_documentation_fragment:
+  - azure
+author:
+  - GuopengLin (@t-glin)
+
+'''
+
+EXAMPLES = '''
+    - name: Create a project resource
+      azure_rm_project: 
+        resource_group_name: VS-Example-Group
+        resource_name: ExampleProject
+        root_resource_name: ExampleAccount
+        name: ExampleProject
+        type: Microsoft.VisualStudio/account/project
+        id: >-
+          /subscriptions/0de7f055-dbea-498d-8e9e-da287eedca90/resourceGroups/VS-Example-Group/providers/Microsoft.VisualStudio/account/ExampleAccount/project/ExampleProject
+        location: Central US
+        properties:
+          process_template_id: 6B724908-EF14-45CF-84F8-768B5384DA45
+          version_control_option: Git
+        tags: {}
+        
+
+    - name: Update a project resource
+      azure_rm_project: 
+        resource_group_name: VS-Example-Group
+        resource_name: ExampleProject
+        root_resource_name: ExampleAccount
+        name: ms.example
+        type: Microsoft.VisualStudio/account/extension
+        id: >-
+          /subscriptions/0de7f055-dbea-498d-8e9e-da287eedca90/resourceGroups/VS-Example-Group/providers/microsoft.visualstudio/account/ExampleAccount/project/ExampleProject
+        location: Central US
+        properties: {}
+        tags: {}
+        
+
+'''
+
+RETURN = '''
+id:
+  description:
+    - Unique identifier of the resource.
+  returned: always
+  type: str
+  sample: null
+location:
+  description:
+    - Resource location.
+  returned: always
+  type: str
+  sample: null
+name:
+  description:
+    - Resource name.
+  returned: always
+  type: str
+  sample: null
+tags:
+  description:
+    - Resource tags.
+  returned: always
+  type: dictionary
+  sample: null
+type:
+  description:
+    - Resource type.
+  returned: always
+  type: str
+  sample: null
+properties:
+  description:
+    - Key/value pair of resource properties.
+  returned: always
+  type: dictionary
+  sample: null
+
+'''
+
+import time
+import json
+import re
+from ansible.module_utils.azure_rm_common_ext import AzureRMModuleBaseExt
+from copy import deepcopy
+try:
+    from msrestazure.azure_exceptions import CloudError
+    from azure.mgmt.visual import Visual Studio Resource Provider Client
+    from msrestazure.azure_operation import AzureOperationPoller
+    from msrest.polling import LROPoller
+except ImportError:
+    # This is handled in azure_rm_common
+    pass
+
+
+class Actions:
+    NoAction, Create, Update, Delete = range(4)
+
+
+class AzureRMProject(AzureRMModuleBaseExt):
+    def __init__(self):
+        self.module_arg_spec = dict(
+            resource_group_name=dict(
+                type='str',
+                required=True
+            ),
+            root_resource_name=dict(
+                type='str',
+                required=True
+            ),
+            resource_name=dict(
+                type='str',
+                required=True
+            ),
+            validating=dict(
+                type='str'
+            ),
+            location=dict(
+                type='str',
+                disposition='/location'
+            ),
+            properties=dict(
+                type='dictionary',
+                disposition='/properties'
+            ),
+            state=dict(
+                type='str',
+                default='present',
+                choices=['present', 'absent']
+            )
+        )
+
+        self.resource_group_name = None
+        self.root_resource_name = None
+        self.resource_name = None
+        self.validating = None
+        self.body = {}
+
+        self.results = dict(changed=False)
+        self.mgmt_client = None
+        self.state = None
+        self.to_do = Actions.NoAction
+
+        super(AzureRMProject, self).__init__(derived_arg_spec=self.module_arg_spec,
+                                             supports_check_mode=True,
+                                             supports_tags=True)
+
+    def exec_module(self, **kwargs):
+        for key in list(self.module_arg_spec.keys()):
+            if hasattr(self, key):
+                setattr(self, key, kwargs[key])
+            elif kwargs[key] is not None:
+                self.body[key] = kwargs[key]
+
+        self.inflate_parameters(self.module_arg_spec, self.body, 0)
+
+        old_response = None
+        response = None
+
+        self.mgmt_client = self.get_mgmt_svc_client(Visual Studio Resource Provider Client,
+                                                    base_url=self._cloud_environment.endpoints.resource_manager,
+                                                    api_version='2014-04-01-preview')
+
+        old_response = self.get_resource()
+
+        if not old_response:
+            if self.state == 'present':
+                self.to_do = Actions.Create
+        else:
+            if self.state == 'absent':
+                self.to_do = Actions.Delete
+            else:
+                modifiers = {}
+                self.create_compare_modifiers(self.module_arg_spec, '', modifiers)
+                self.results['modifiers'] = modifiers
+                self.results['compare'] = []
+                if not self.default_compare(modifiers, self.body, old_response, '', self.results):
+                    self.to_do = Actions.Update
+
+        if (self.to_do == Actions.Create) or (self.to_do == Actions.Update):
+            self.results['changed'] = True
+            if self.check_mode:
+                return self.results
+            response = self.create_update_resource()
+        elif self.to_do == Actions.Delete:
+            self.results['changed'] = True
+            if self.check_mode:
+                return self.results
+            self.delete_resource()
+        else:
+            self.results['changed'] = False
+            response = old_response
+
+        return self.results
+
+    def create_update_resource(self):
+        try:
+            if self.to_do == Actions.Create:
+                response = self.mgmt_client.projects.create(resource_group_name=self.resource_group_name,
+                                                            root_resource_name=self.root_resource_name,
+                                                            resource_name=self.resource_name,
+                                                            validating=self.validating,
+                                                            body=self.body)
+            else:
+                response = self.mgmt_client.projects.update(resource_group_name=self.resource_group_name,
+                                                            root_resource_name=self.root_resource_name,
+                                                            resource_name=self.resource_name,
+                                                            body=self.body)
+            if isinstance(response, AzureOperationPoller) or isinstance(response, LROPoller):
+                response = self.get_poller_result(response)
+        except CloudError as exc:
+            self.log('Error attempting to create the Project instance.')
+            self.fail('Error creating the Project instance: {0}'.format(str(exc)))
+        return response.as_dict()
+
+    def delete_resource(self):
+        try:
+            response = self.mgmt_client.projects.delete()
+        except CloudError as e:
+            self.log('Error attempting to delete the Project instance.')
+            self.fail('Error deleting the Project instance: {0}'.format(str(e)))
+
+        return True
+
+    def get_resource(self):
+        try:
+            response = self.mgmt_client.projects.get(resource_group_name=self.resource_group_name,
+                                                     root_resource_name=self.root_resource_name,
+                                                     resource_name=self.resource_name)
+        except CloudError as e:
+            return False
+        return response.as_dict()
+
+
+def main():
+    AzureRMProject()
+
+
+if __name__ == '__main__':
+    main()
