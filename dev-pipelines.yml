@@ -1,0 +1,38 @@
+schedules:
+- cron: "*/3 * * * *"
+  displayName: 'Execute dev-pipeline every Wednesday' 
+  branches:
+    include:
+      - master
+      - release/*
+  always: true
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+jobs:
+  - job: A
+    steps:
+      - bash: echo 'A'
+  - job: B
+    steps:
+      - bash: echo 'B'
+  - job: Sendmail
+    dependsOn:
+      - A
+      - B
+    condition: always()
+    steps:
+      - task: SendEmail@1
+        inputs:
+          To: 'xiuxi.sun@qq.com'
+          From: 'xiuxi.sun@qq.com'
+          Subject: 'test'
+          Body: 'send mail!'
+          BodyAsHtml: false
+          AddAttachment: false
+          SmtpServer: 'smtp.qq.com'
+          SmtpPort: '465'
+          SmtpUsername: 'xiuxi.sun@qq.com'
+          SmtpPassword: 'jdvtetkivptobeja'

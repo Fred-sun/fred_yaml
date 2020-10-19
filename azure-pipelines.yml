@@ -6,6 +6,7 @@ parameters:
 - name: PYTHON_VER
   displayName: 'Python Version'
   type: string
+<<<<<<< HEAD
   default: "2.7"
   values:
   - "2.7"
@@ -17,6 +18,20 @@ parameters:
   values:
   - "2.9.0"
   - "2.10.0"
+=======
+  default: python2
+  values:
+  - python3
+  - python4
+  - python5
+- name: ANSIBLE_VER
+  displayName: 'Ansible Version'
+  type: string
+  default: 9
+  values:
+  - 9
+  - 10
+>>>>>>> 6b54757fc54cbf179545d1488a54034ba6e6ab91
 
 trigger:
 - master
@@ -30,9 +45,12 @@ steps:
 - script: echo ${{ parameters.PYTHON_VER }} and ${{ parameters.ANSIBLE_VER }}
   displayName: 'Get predefine parameter'
 
+<<<<<<< HEAD
 - script: echo Python${{ parameters.PYTHON_VER }} and ${{ parameters.ANSIBLE_VER }}
   displayName: 'Get predefine parameter'
 
+=======
+>>>>>>> 6b54757fc54cbf179545d1488a54034ba6e6ab91
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml

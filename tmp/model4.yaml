@@ -1,0 +1,2471 @@
+info:
+  description: Use this API to manage the Windows IoT device services in your Azure subscription.
+  title: DeviceServices
+  extensions:
+    cli-dump-index: 10
+schemas:
+  booleans:
+    - &ref_31
+      type: boolean
+      language:
+        default:
+          name: boolean
+          description: The value which indicates whether the provided name is available.
+      protocol: {}
+  numbers:
+    - &ref_26
+      type: integer
+      precision: 64
+      language:
+        default:
+          name: Integer
+          description: 'Windows IoT Device Service device allocation,'
+        cli:
+          name: Integer
+          description: 'Windows IoT Device Service device allocation,'
+      protocol: {}
+  strings:
+    - &ref_0
+      type: string
+      language:
+        default:
+          name: String
+          description: simple string
+        cli:
+          name: String
+          description: simple string
+      protocol: {}
+    - &ref_2
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: OperationEntityName
+          description: 'Operation name: {provider}/{resource}/{operation}.'
+        cli:
+          name: OperationEntityName
+          description: 'Operation name: {provider}/{resource}/{operation}.'
+      protocol: {}
+    - &ref_3
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: OperationDisplayInfoDescription
+          description: The description of the operation.
+        cli:
+          name: OperationDisplayInfoDescription
+          description: The description of the operation.
+      protocol: {}
+    - &ref_4
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: OperationDisplayInfoOperation
+          description: 'The action that users can perform, based on their permission level.'
+        cli:
+          name: OperationDisplayInfoOperation
+          description: 'The action that users can perform, based on their permission level.'
+      protocol: {}
+    - &ref_5
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: OperationDisplayInfoProvider
+          description: 'Service provider: Azure Data Catalog Service.'
+        cli:
+          name: OperationDisplayInfoProvider
+          description: 'Service provider: Azure Data Catalog Service.'
+      protocol: {}
+    - &ref_6
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: OperationDisplayInfoResource
+          description: Resource on which the operation is performed.
+        cli:
+          name: OperationDisplayInfoResource
+          description: Resource on which the operation is performed.
+      protocol: {}
+    - &ref_7
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: OperationListResultNextLink
+          description: URL to get the next set of operation list results if there are any.
+        cli:
+          name: OperationListResultNextLink
+          description: URL to get the next set of operation list results if there are any.
+      protocol: {}
+    - &ref_10
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ErrorDetailsCode
+          description: One of a server-defined set of error codes.
+        cli:
+          name: ErrorDetailsCode
+          description: One of a server-defined set of error codes.
+      protocol: {}
+    - &ref_11
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ErrorDetailsMessage
+          description: A human-readable representation of the error.
+        cli:
+          name: ErrorDetailsMessage
+          description: A human-readable representation of the error.
+      protocol: {}
+    - &ref_12
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ErrorDetailsTarget
+          description: The target of the particular error.
+        cli:
+          name: ErrorDetailsTarget
+          description: The target of the particular error.
+      protocol: {}
+    - &ref_13
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ErrorDetails
+          description: A human-readable representation of the error's details.
+        cli:
+          name: ErrorDetails
+          description: A human-readable representation of the error's details.
+      protocol: {}
+    - &ref_1
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: String
+          description: ''
+        cli:
+          name: String
+          description: ''
+      protocol: {}
+    - &ref_23
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServiceEtag
+          description: 'The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.'
+        cli:
+          name: DeviceServiceEtag
+          description: 'The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.'
+      protocol: {}
+    - &ref_24
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServicePropertiesNotes
+          description: Windows IoT Device Service notes.
+        cli:
+          name: DeviceServicePropertiesNotes
+          description: Windows IoT Device Service notes.
+      protocol: {}
+    - &ref_27
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServicePropertiesBillingDomainName
+          description: Windows IoT Device Service ODM AAD domain
+        cli:
+          name: DeviceServicePropertiesBillingDomainName
+          description: Windows IoT Device Service ODM AAD domain
+      protocol: {}
+    - &ref_28
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServicePropertiesAdminDomainName
+          description: Windows IoT Device Service OEM AAD domain
+        cli:
+          name: DeviceServicePropertiesAdminDomainName
+          description: Windows IoT Device Service OEM AAD domain
+      protocol: {}
+    - &ref_22
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      extensions:
+        x-ms-mutability:
+          - read
+          - create
+      language:
+        default:
+          name: TrackedResourceLocation
+          description: The Azure Region where the resource lives
+        cli:
+          name: TrackedResourceLocation
+          description: The Azure Region where the resource lives
+      protocol: {}
+    - &ref_18
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ResourceId
+          description: Fully qualified resource Id for the resource
+        cli:
+          name: ResourceId
+          description: Fully qualified resource Id for the resource
+      protocol: {}
+    - &ref_19
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ResourceName
+          description: The name of the resource
+        cli:
+          name: ResourceName
+          description: The name of the resource
+      protocol: {}
+    - &ref_20
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: ResourceType
+          description: The type of the resource.
+        cli:
+          name: ResourceType
+          description: The type of the resource.
+      protocol: {}
+    - &ref_29
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServiceDescriptionListResultNextLink
+          description: The next link.
+        cli:
+          name: DeviceServiceDescriptionListResultNextLink
+          description: The next link.
+      protocol: {}
+    - &ref_30
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServiceCheckNameAvailabilityParametersName
+          description: The name of the Windows IoT Device Service to check.
+        cli:
+          name: DeviceServiceCheckNameAvailabilityParametersName
+          description: The name of the Windows IoT Device Service to check.
+      protocol: {}
+    - &ref_33
+      type: string
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: DeviceServiceNameAvailabilityInfoMessage
+          description: The detailed reason message.
+        cli:
+          name: DeviceServiceNameAvailabilityInfoMessage
+          description: The detailed reason message.
+      protocol: {}
+  sealedChoices:
+    - &ref_32
+      choices:
+        - value: Invalid
+          language:
+            default:
+              name: Invalid
+              description: ''
+            cli:
+              name: Invalid
+              description: ''
+              cliKey: Invalid
+        - value: AlreadyExists
+          language:
+            default:
+              name: AlreadyExists
+              description: ''
+            cli:
+              name: AlreadyExists
+              description: ''
+              cliKey: AlreadyExists
+      type: sealed-choice
+      apiVersions:
+        - version: '2019-06-01'
+      choiceType: *ref_0
+      language:
+        default:
+          name: ServiceNameUnavailabilityReason
+          description: The reason for unavailability.
+        cli:
+          name: ServiceNameUnavailabilityReason
+          description: The reason for unavailability.
+          cliKey: serviceNameUnavailabilityReason
+      protocol: {}
+  constants:
+    - &ref_36
+      type: constant
+      value:
+        value: '2019-06-01'
+      valueType: *ref_0
+      language:
+        default:
+          name: ApiVersion20190601
+          description: Api Version (2019-06-01)
+        cli:
+          name: ApiVersion20190601
+          description: Api Version (2019-06-01)
+      protocol: {}
+  dictionaries:
+    - &ref_21
+      type: dictionary
+      elementType: *ref_1
+      nullableItems: false
+      language:
+        default:
+          name: TrackedResourceTags
+          description: Resource tags.
+        cli:
+          name: TrackedResourceTags
+          description: Resource tags.
+          cli-complexity: dictionary_simple
+          cli-mark: checked
+      protocol: {}
+  dateTimes:
+    - &ref_25
+      type: date-time
+      format: date-time
+      apiVersions:
+        - version: '2019-06-01'
+      language:
+        default:
+          name: device_service_properties_start_date
+          description: 'Windows IoT Device Service start date,'
+      protocol: {}
+  objects:
+    - &ref_39
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      properties:
+        - schema: &ref_34
+            type: array
+            apiVersions:
+              - version: '2019-06-01'
+            elementType: &ref_8
+              type: object
+              apiVersions:
+                - version: '2019-06-01'
+              properties:
+                - schema: *ref_2
+                  serializedName: name
+                  language:
+                    default:
+                      name: name
+                      description: 'Operation name: {provider}/{resource}/{operation}.'
+                    cli:
+                      name: name
+                      description: 'Operation name: {provider}/{resource}/{operation}.'
+                      cliKey: name
+                  protocol: {}
+                - schema: &ref_9
+                    type: object
+                    apiVersions:
+                      - version: '2019-06-01'
+                    properties:
+                      - schema: *ref_3
+                        serializedName: description
+                        language:
+                          default:
+                            name: description
+                            description: The description of the operation.
+                          cli:
+                            name: description
+                            description: The description of the operation.
+                            cliKey: description
+                        protocol: {}
+                      - schema: *ref_4
+                        serializedName: operation
+                        language:
+                          default:
+                            name: operation
+                            description: 'The action that users can perform, based on their permission level.'
+                          cli:
+                            name: operation
+                            description: 'The action that users can perform, based on their permission level.'
+                            cliKey: operation
+                        protocol: {}
+                      - schema: *ref_5
+                        serializedName: provider
+                        language:
+                          default:
+                            name: provider
+                            description: 'Service provider: Azure Data Catalog Service.'
+                          cli:
+                            name: provider
+                            description: 'Service provider: Azure Data Catalog Service.'
+                            cliKey: provider
+                        protocol: {}
+                      - schema: *ref_6
+                        serializedName: resource
+                        language:
+                          default:
+                            name: resource
+                            description: Resource on which the operation is performed.
+                          cli:
+                            name: resource
+                            description: Resource on which the operation is performed.
+                            cliKey: resource
+                        protocol: {}
+                    serializationFormats:
+                      - json
+                    usage:
+                      - output
+                    language:
+                      default:
+                        name: OperationDisplayInfo
+                        description: The operation supported by Azure Data Catalog Service.
+                        namespace: ''
+                      cli:
+                        name: OperationDisplayInfo
+                        description: The operation supported by Azure Data Catalog Service.
+                        cli-complexity: object_simple
+                        cli-mark: checked
+                        cli-simplify-indicator:
+                          propertyCountIfSimplify: 4
+                          propertyCountIfSimplifyWithoutSimpleObject: 4
+                          simplifiable: true
+                        cliKey: OperationDisplayInfo
+                    protocol: {}
+                  serializedName: display
+                  language:
+                    default:
+                      name: display
+                      description: The operation supported by Azure Data Catalog Service.
+                    cli:
+                      name: display
+                      description: The operation supported by Azure Data Catalog Service.
+                      cliKey: display
+                  protocol: {}
+              serializationFormats:
+                - json
+              usage:
+                - output
+              language:
+                default:
+                  name: OperationEntity
+                  description: The operation supported by Azure Data Catalog Service.
+                  namespace: ''
+                cli:
+                  name: OperationEntity
+                  description: The operation supported by Azure Data Catalog Service.
+                  cli-complexity: object_complex
+                  cli-mark: checked
+                  cli-simplify-indicator:
+                    propertyCountIfSimplify: 5
+                    propertyCountIfSimplifyWithoutSimpleObject: 2
+                    simplifiable: true
+                  cliKey: OperationEntity
+              protocol: {}
+            language:
+              default:
+                name: OperationListResultValue
+                description: List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider.
+              cli:
+                name: OperationListResultValue
+                description: List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider.
+                cli-complexity: array_complex
+                cli-mark: checked
+            protocol: {}
+          readOnly: true
+          serializedName: value
+          language:
+            default:
+              name: value
+              description: List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider.
+            cli:
+              name: value
+              description: List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider.
+              cliKey: value
+          protocol: {}
+        - schema: *ref_7
+          readOnly: true
+          serializedName: nextLink
+          language:
+            default:
+              name: nextLink
+              description: URL to get the next set of operation list results if there are any.
+            cli:
+              name: nextLink
+              description: URL to get the next set of operation list results if there are any.
+              cliKey: nextLink
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - output
+      language:
+        default:
+          name: OperationListResult
+          description: Result of the request to list Windows IoT Device Service operations. It contains a list of operations and a URL link to get the next set of results.
+          namespace: ''
+        cli:
+          name: OperationListResult
+          description: Result of the request to list Windows IoT Device Service operations. It contains a list of operations and a URL link to get the next set of results.
+          cli-complexity: object_complex
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 0
+            propertyCountIfSimplifyWithoutSimpleObject: 0
+            simplifiable: true
+          cliKey: OperationListResult
+      protocol: {}
+    - *ref_8
+    - *ref_9
+    - &ref_40
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      properties:
+        - schema: *ref_10
+          serializedName: code
+          language:
+            default:
+              name: code
+              description: One of a server-defined set of error codes.
+            cli:
+              name: code
+              description: One of a server-defined set of error codes.
+              cliKey: code
+          protocol: {}
+        - schema: *ref_11
+          serializedName: message
+          language:
+            default:
+              name: message
+              description: A human-readable representation of the error.
+            cli:
+              name: message
+              description: A human-readable representation of the error.
+              cliKey: message
+          protocol: {}
+        - schema: *ref_12
+          serializedName: target
+          language:
+            default:
+              name: target
+              description: The target of the particular error.
+            cli:
+              name: target
+              description: The target of the particular error.
+              cliKey: target
+          protocol: {}
+        - schema: *ref_13
+          serializedName: details
+          language:
+            default:
+              name: details
+              description: A human-readable representation of the error's details.
+            cli:
+              name: details
+              description: A human-readable representation of the error's details.
+              cliKey: details
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - exception
+      language:
+        default:
+          name: ErrorDetails
+          description: The details of the error.
+          namespace: ''
+        cli:
+          name: ErrorDetails
+          description: The details of the error.
+          cli-complexity: object_simple
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 4
+            propertyCountIfSimplifyWithoutSimpleObject: 4
+            simplifiable: true
+          cliKey: ErrorDetails
+      protocol: {}
+    - &ref_14
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      parents:
+        all:
+          - &ref_15
+            type: object
+            apiVersions:
+              - version: '2019-06-01'
+            children:
+              all:
+                - *ref_14
+              immediate:
+                - *ref_14
+            parents:
+              all:
+                - &ref_16
+                  type: object
+                  apiVersions:
+                    - version: '2019-06-01'
+                  children:
+                    all:
+                      - *ref_15
+                      - *ref_14
+                      - &ref_17
+                        type: object
+                        apiVersions:
+                          - version: '2019-06-01'
+                        parents:
+                          all:
+                            - *ref_16
+                          immediate:
+                            - *ref_16
+                        serializationFormats:
+                          - json
+                        usage:
+                          - output
+                        language:
+                          default:
+                            name: ProxyResource
+                            description: The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+                            namespace: ''
+                          cli:
+                            name: ProxyResource
+                            description: The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+                            cli-complexity: object_simple
+                            cli-mark: checked
+                            cli-simplify-indicator:
+                              propertyCountIfSimplify: 0
+                              propertyCountIfSimplifyWithoutSimpleObject: 0
+                              simplifiable: true
+                            cliKey: ProxyResource
+                        protocol: {}
+                    immediate:
+                      - *ref_15
+                      - *ref_17
+                  properties:
+                    - schema: *ref_18
+                      readOnly: true
+                      serializedName: id
+                      language:
+                        default:
+                          name: id
+                          description: Fully qualified resource Id for the resource
+                        cli:
+                          name: id
+                          description: Fully qualified resource Id for the resource
+                          cliKey: id
+                      protocol: {}
+                    - schema: *ref_19
+                      readOnly: true
+                      serializedName: name
+                      language:
+                        default:
+                          name: name
+                          description: The name of the resource
+                        cli:
+                          name: name
+                          description: The name of the resource
+                          cliKey: name
+                      protocol: {}
+                    - schema: *ref_20
+                      readOnly: true
+                      serializedName: type
+                      language:
+                        default:
+                          name: type
+                          description: The type of the resource.
+                        cli:
+                          name: type
+                          description: The type of the resource.
+                          cliKey: type
+                      protocol: {}
+                  serializationFormats:
+                    - json
+                  usage:
+                    - output
+                  extensions:
+                    x-ms-azure-resource: true
+                  language:
+                    default:
+                      name: Resource
+                      description: The core properties of ARM resources
+                      namespace: ''
+                    cli:
+                      name: Resource
+                      description: The core properties of ARM resources
+                      cli-complexity: object_simple
+                      cli-mark: checked
+                      cli-simplify-indicator:
+                        propertyCountIfSimplify: 0
+                        propertyCountIfSimplifyWithoutSimpleObject: 0
+                        simplifiable: true
+                      cliKey: Resource
+                  protocol: {}
+              immediate:
+                - *ref_16
+            properties:
+              - schema: *ref_21
+                serializedName: tags
+                language:
+                  default:
+                    name: tags
+                    description: Resource tags.
+                  cli:
+                    name: tags
+                    description: Resource tags.
+                    cliKey: tags
+                protocol: {}
+              - schema: *ref_22
+                serializedName: location
+                language:
+                  default:
+                    name: location
+                    description: The Azure Region where the resource lives
+                  cli:
+                    name: location
+                    description: The Azure Region where the resource lives
+                    cliKey: location
+                protocol: {}
+            serializationFormats:
+              - json
+            usage:
+              - output
+            language:
+              default:
+                name: TrackedResource
+                description: The resource model definition for a ARM tracked top level resource
+                namespace: ''
+              cli:
+                name: TrackedResource
+                description: The resource model definition for a ARM tracked top level resource
+                cli-complexity: object_complex
+                cli-mark: checked
+                cli-simplify-indicator:
+                  propertyCountIfSimplify: 10000
+                  propertyCountIfSimplifyWithoutSimpleObject: 10000
+                  simplifiable: false
+                cliKey: TrackedResource
+            protocol: {}
+          - *ref_16
+        immediate:
+          - *ref_15
+      properties:
+        - schema: *ref_23
+          serializedName: etag
+          language:
+            default:
+              name: etag
+              description: 'The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.'
+            cli:
+              name: etag
+              description: 'The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.'
+              cliKey: etag
+          protocol: {}
+        - schema: *ref_24
+          flattenedNames:
+            - properties
+            - notes
+          serializedName: notes
+          language:
+            default:
+              name: notes
+              description: Windows IoT Device Service notes.
+            cli:
+              name: notes
+              description: Windows IoT Device Service notes.
+              cliKey: notes
+          protocol: {}
+        - schema: *ref_25
+          flattenedNames:
+            - properties
+            - startDate
+          readOnly: true
+          serializedName: startDate
+          language:
+            default:
+              name: startDate
+              description: 'Windows IoT Device Service start date,'
+            cli:
+              name: startDate
+              description: 'Windows IoT Device Service start date,'
+              cliKey: startDate
+          protocol: {}
+        - schema: *ref_26
+          flattenedNames:
+            - properties
+            - quantity
+          serializedName: quantity
+          language:
+            default:
+              name: quantity
+              description: 'Windows IoT Device Service device allocation,'
+            cli:
+              name: quantity
+              description: 'Windows IoT Device Service device allocation,'
+              cliKey: quantity
+          protocol: {}
+        - schema: *ref_27
+          flattenedNames:
+            - properties
+            - billingDomainName
+          serializedName: billingDomainName
+          language:
+            default:
+              name: billingDomainName
+              description: Windows IoT Device Service ODM AAD domain
+            cli:
+              name: billingDomainName
+              description: Windows IoT Device Service ODM AAD domain
+              cliKey: billingDomainName
+          protocol: {}
+        - schema: *ref_28
+          flattenedNames:
+            - properties
+            - adminDomainName
+          serializedName: adminDomainName
+          language:
+            default:
+              name: adminDomainName
+              description: Windows IoT Device Service OEM AAD domain
+            cli:
+              name: adminDomainName
+              description: Windows IoT Device Service OEM AAD domain
+              cliKey: adminDomainName
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - output
+      language:
+        default:
+          name: DeviceService
+          description: The description of the Windows IoT Device Service.
+          namespace: ''
+        cli:
+          name: DeviceService
+          description: The description of the Windows IoT Device Service.
+          cli-complexity: object_simple
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 10000
+            propertyCountIfSimplifyWithoutSimpleObject: 10000
+            simplifiable: false
+          cliKey: DeviceService
+      protocol: {}
+    - &ref_44
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      properties:
+        - &ref_46
+          schema: *ref_24
+          serializedName: notes
+          language:
+            default:
+              name: notes
+              description: Windows IoT Device Service notes.
+            cli:
+              name: notes
+              description: Windows IoT Device Service notes.
+              cliKey: notes
+          protocol: {}
+        - schema: *ref_25
+          readOnly: true
+          serializedName: startDate
+          language:
+            default:
+              name: startDate
+              description: 'Windows IoT Device Service start date,'
+            cli:
+              name: startDate
+              description: 'Windows IoT Device Service start date,'
+              cliKey: startDate
+          protocol: {}
+        - &ref_47
+          schema: *ref_26
+          serializedName: quantity
+          language:
+            default:
+              name: quantity
+              description: 'Windows IoT Device Service device allocation,'
+            cli:
+              name: quantity
+              description: 'Windows IoT Device Service device allocation,'
+              cliKey: quantity
+          protocol: {}
+        - &ref_48
+          schema: *ref_27
+          serializedName: billingDomainName
+          language:
+            default:
+              name: billingDomainName
+              description: Windows IoT Device Service ODM AAD domain
+            cli:
+              name: billingDomainName
+              description: Windows IoT Device Service ODM AAD domain
+              cliKey: billingDomainName
+          protocol: {}
+        - &ref_49
+          schema: *ref_28
+          serializedName: adminDomainName
+          language:
+            default:
+              name: adminDomainName
+              description: Windows IoT Device Service OEM AAD domain
+            cli:
+              name: adminDomainName
+              description: Windows IoT Device Service OEM AAD domain
+              cliKey: adminDomainName
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - input
+        - output
+      extensions:
+        x-ms-flattened: true
+      language:
+        default:
+          name: DeviceServiceProperties
+          description: The properties of a Windows IoT Device Service.
+          namespace: ''
+        cli:
+          name: DeviceServiceProperties
+          description: The properties of a Windows IoT Device Service.
+          cli-complexity: object_simple
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 4
+            propertyCountIfSimplifyWithoutSimpleObject: 4
+            simplifiable: true
+          cliKey: DeviceServiceProperties
+      protocol: {}
+    - *ref_15
+    - *ref_16
+    - &ref_68
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      properties:
+        - schema: &ref_35
+            type: array
+            apiVersions:
+              - version: '2019-06-01'
+            elementType: *ref_14
+            language:
+              default:
+                name: DeviceServiceDescriptionListResultValue
+                description: The array of DeviceService objects.
+              cli:
+                name: DeviceServiceDescriptionListResultValue
+                description: The array of DeviceService objects.
+                cli-complexity: array_complex
+                cli-mark: checked
+            protocol: {}
+          serializedName: value
+          language:
+            default:
+              name: value
+              description: The array of DeviceService objects.
+            cli:
+              name: value
+              description: The array of DeviceService objects.
+              cliKey: value
+          protocol: {}
+        - schema: *ref_29
+          readOnly: true
+          serializedName: nextLink
+          language:
+            default:
+              name: nextLink
+              description: The next link.
+            cli:
+              name: nextLink
+              description: The next link.
+              cliKey: nextLink
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - output
+      language:
+        default:
+          name: DeviceServiceDescriptionListResult
+          description: The JSON-serialized array of DeviceService objects with a next link.
+          namespace: ''
+        cli:
+          name: DeviceServiceDescriptionListResult
+          description: The JSON-serialized array of DeviceService objects with a next link.
+          cli-complexity: object_complex
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 10000
+            propertyCountIfSimplifyWithoutSimpleObject: 10000
+            simplifiable: false
+          cliKey: DeviceServiceDescriptionListResult
+      protocol: {}
+    - &ref_69
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      properties:
+        - &ref_71
+          schema: *ref_30
+          required: true
+          serializedName: name
+          language:
+            default:
+              name: name
+              description: The name of the Windows IoT Device Service to check.
+            cli:
+              name: name
+              description: The name of the Windows IoT Device Service to check.
+              cliKey: name
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - input
+      language:
+        default:
+          name: DeviceServiceCheckNameAvailabilityParameters
+          description: Input values.
+          namespace: ''
+        cli:
+          name: DeviceServiceCheckNameAvailabilityParameters
+          description: Input values.
+          cli-complexity: object_simple
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 1
+            propertyCountIfSimplifyWithoutSimpleObject: 1
+            simplifiable: true
+          cliKey: DeviceServiceCheckNameAvailabilityParameters
+      protocol: {}
+    - &ref_73
+      type: object
+      apiVersions:
+        - version: '2019-06-01'
+      properties:
+        - schema: *ref_31
+          readOnly: true
+          serializedName: nameAvailable
+          language:
+            default:
+              name: nameAvailable
+              description: The value which indicates whether the provided name is available.
+            cli:
+              name: nameAvailable
+              description: The value which indicates whether the provided name is available.
+              cliKey: nameAvailable
+          protocol: {}
+        - schema: *ref_32
+          readOnly: true
+          serializedName: reason
+          language:
+            default:
+              name: reason
+              description: The reason for unavailability.
+            cli:
+              name: reason
+              description: The reason for unavailability.
+              cliKey: reason
+          protocol: {}
+        - schema: *ref_33
+          serializedName: message
+          language:
+            default:
+              name: message
+              description: The detailed reason message.
+            cli:
+              name: message
+              description: The detailed reason message.
+              cliKey: message
+          protocol: {}
+      serializationFormats:
+        - json
+      usage:
+        - output
+      language:
+        default:
+          name: DeviceServiceNameAvailabilityInfo
+          description: The properties indicating whether a given Windows IoT Device Service name is available.
+          namespace: ''
+        cli:
+          name: DeviceServiceNameAvailabilityInfo
+          description: The properties indicating whether a given Windows IoT Device Service name is available.
+          cli-complexity: object_simple
+          cli-mark: checked
+          cli-simplify-indicator:
+            propertyCountIfSimplify: 1
+            propertyCountIfSimplifyWithoutSimpleObject: 1
+            simplifiable: true
+          cliKey: DeviceServiceNameAvailabilityInfo
+      protocol: {}
+    - *ref_17
+  arrays:
+    - *ref_34
+    - *ref_35
+globalParameters:
+  - &ref_41
+    schema: *ref_1
+    implementation: Client
+    required: true
+    extensions:
+      x-ms-priority: 0
+    language:
+      default:
+        name: SubscriptionId
+        description: The subscription identifier.
+        serializedName: subscriptionId
+      cli:
+        name: SubscriptionId
+        description: The subscription identifier.
+        cliKey: subscriptionId
+    protocol:
+      http:
+        in: path
+  - &ref_37
+    schema: *ref_0
+    clientDefaultValue: 'https://management.azure.com'
+    implementation: Client
+    origin: 'modelerfour:synthesized/host'
+    required: true
+    extensions:
+      x-ms-skip-url-encoding: true
+    language:
+      default:
+        name: $host
+        description: server parameter
+        serializedName: $host
+      cli:
+        name: $host
+        description: server parameter
+        cliKey: $host
+    protocol:
+      http:
+        in: uri
+  - &ref_38
+    schema: *ref_36
+    implementation: Client
+    origin: 'modelerfour:synthesized/api-version'
+    required: true
+    language:
+      default:
+        name: Apiversion
+        description: Api Version
+        serializedName: api-version
+      cli:
+        name: Apiversion
+        description: Api Version
+        cliKey: ApiVersion
+    protocol:
+      http:
+        in: query
+operationGroups:
+  - $key: Operations
+    operations:
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+        requests:
+          - language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: /providers/Microsoft.WindowsIoT/operations
+                method: get
+                uri: '{$host}'
+        signatureParameters: []
+        responses:
+          - schema: *ref_39
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Operations_List:
+              parameters:
+                api-version: '2019-06-01'
+              responses:
+                '200':
+                  body:
+                    value:
+                      - name: Microsoft.WindowsIoT/Services/write
+                        display:
+                          description: Creates a Windows IoT Subscription with the specified parameters or update the properties or tags or adds custom domain for the specified Windows IoT Subscription.
+                          operation: Create/Update Windows IoT Subscription
+                          provider: Windows IoT
+                          resource: Windows IoT Services
+                      - name: Microsoft.WindowsIoT/Services/delete
+                        display:
+                          description: Deletes an existing Windows IoT Subscription.
+                          operation: Delete Windows IoT Subscription
+                          provider: Windows IoT
+                          resource: Windows IoT Services
+                      - name: Microsoft.WindowsIoT/checkNameAvailability/read
+                        display:
+                          description: Checks that account name is valid and is not in use.
+                          operation: Check Name Availability
+                          provider: Windows IoT
+                          resource: Name Availability
+                      - name: Microsoft.WindowsIoT/Services/read
+                        display:
+                          description: Returns the list of Windows IoT Services or gets the properties for the specified Windows IoT Subscription.
+                          operation: List/Get Windows IoT Subscription(s)
+                          provider: Windows IoT
+                          resource: Windows IoT Services
+                      - name: Microsoft.WindowsIoT/operations/read
+                        display:
+                          description: Polls the status of an asynchronous operation.
+                          operation: Poll Asynchronous Operation
+                          provider: Windows IoT
+                          resource: Operations
+          x-ms-pageable:
+            nextLinkName: nextLink
+        language:
+          default:
+            name: List
+            description: Lists all of the available Windows IoT Services REST API operations.
+            paging:
+              nextLinkName: nextLink
+          cli:
+            name: List
+            description: Lists all of the available Windows IoT Services REST API operations.
+            cliKey: List
+            hidden: true
+        protocol: {}
+    language:
+      default:
+        name: Operation
+        description: ''
+      cli:
+        name: Operation
+        description: ''
+        cliKey: Operations
+    protocol: {}
+  - $key: Services
+    operations:
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+          - &ref_42
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                serializedName: resourceGroupName
+              cli:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                cliKey: resourceGroupName
+            protocol:
+              http:
+                in: path
+          - &ref_43
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                serializedName: deviceName
+              cli:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                cliKey: deviceName
+            protocol:
+              http:
+                in: path
+        requests:
+          - language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}'
+                method: get
+                uri: '{$host}'
+        signatureParameters:
+          - *ref_42
+          - *ref_43
+        responses:
+          - schema: *ref_14
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Services_GetProperties:
+              parameters:
+                api-version: '2019-06-01'
+                deviceName: service8596
+                resourceGroupName: res9407
+                subscriptionId: 45b60d85-fd72-427a-a708-f994d26e593e
+              responses:
+                '200':
+                  body:
+                    name: service8596
+                    type: Microsoft.WindowsIoT/Services
+                    id: /subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res9407/providers/Microsoft.WindowsIoT/Services/service8596
+                    location: westus
+                    properties:
+                      adminDomainName: d.e.f
+                      billingDomainName: a.b.c
+                      notes: blah
+                      quantity: 1000000
+                      startDate: '2018-01-01T12:00:00000Z'
+        language:
+          default:
+            name: Get
+            description: Get the non-security related metadata of a Windows IoT Device Service.
+          cli:
+            name: Get
+            description: Get the non-security related metadata of a Windows IoT Device Service.
+            cliKey: Get
+        protocol: {}
+      - &ref_90
+        apiVersions: &ref_74
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+          - &ref_54
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                serializedName: resourceGroupName
+              cli:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                cliKey: resourceGroupName
+            protocol:
+              http: &ref_75
+                in: path
+          - &ref_55
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                serializedName: deviceName
+              cli:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                cliKey: deviceName
+            protocol:
+              http: &ref_76
+                in: path
+          - &ref_56
+            schema: *ref_1
+            implementation: Method
+            language:
+              default:
+                name: ifMatch
+                description: ETag of the Windows IoT Device Service. Do not specify for creating a new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
+                serializedName: If-Match
+              cli:
+                name: ifMatch
+                description: ETag of the Windows IoT Device Service. Do not specify for creating a new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
+                cliKey: If-Match
+            protocol:
+              http: &ref_77
+                in: header
+        requests:
+          - parameters:
+              - &ref_45
+                schema: *ref_44
+                flattened: true
+                implementation: Method
+                required: true
+                extensions:
+                  x-ms-client-flatten: true
+                language:
+                  default:
+                    name: deviceService
+                    description: The Windows IoT Device Service metadata and security metadata.
+                  cli:
+                    name: deviceService
+                    description: The Windows IoT Device Service metadata and security metadata.
+                    cliKey: deviceService
+                protocol:
+                  http: &ref_78
+                    in: body
+                    style: json
+              - &ref_50
+                schema: *ref_24
+                implementation: Method
+                originalParameter: *ref_45
+                pathToProperty: []
+                targetProperty: *ref_46
+                language:
+                  default:
+                    name: notes
+                    description: Windows IoT Device Service notes.
+                  cli:
+                    name: notes
+                    description: Windows IoT Device Service notes.
+                    cliKey: notes
+                protocol: {}
+              - &ref_51
+                schema: *ref_26
+                implementation: Method
+                originalParameter: *ref_45
+                pathToProperty: []
+                targetProperty: *ref_47
+                language:
+                  default:
+                    name: quantity
+                    description: 'Windows IoT Device Service device allocation,'
+                  cli:
+                    name: quantity
+                    description: 'Windows IoT Device Service device allocation,'
+                    cliKey: quantity
+                protocol: {}
+              - &ref_52
+                schema: *ref_27
+                implementation: Method
+                originalParameter: *ref_45
+                pathToProperty: []
+                targetProperty: *ref_48
+                language:
+                  default:
+                    name: billingDomainName
+                    description: Windows IoT Device Service ODM AAD domain
+                  cli:
+                    name: billingDomainName
+                    description: Windows IoT Device Service ODM AAD domain
+                    cliKey: billingDomainName
+                protocol: {}
+              - &ref_53
+                schema: *ref_28
+                implementation: Method
+                originalParameter: *ref_45
+                pathToProperty: []
+                targetProperty: *ref_49
+                language:
+                  default:
+                    name: adminDomainName
+                    description: Windows IoT Device Service OEM AAD domain
+                  cli:
+                    name: adminDomainName
+                    description: Windows IoT Device Service OEM AAD domain
+                    cliKey: adminDomainName
+                protocol: {}
+            signatureParameters:
+              - *ref_50
+              - *ref_51
+              - *ref_52
+              - *ref_53
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http: &ref_84
+                path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}'
+                method: put
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                uri: '{$host}'
+        signatureParameters:
+          - *ref_54
+          - *ref_55
+          - *ref_56
+        responses: &ref_88
+          - schema: *ref_14
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions: &ref_89
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples: &ref_91
+            Service_Create:
+              parameters:
+                api-version: '2019-06-01'
+                deviceName: service4445
+                deviceService:
+                  adminDomainName: d.e.f
+                  billingDomainName: a.b.c
+                  notes: blah
+                  quantity: 1000000
+                resourceGroupName: res9101
+                subscriptionId: 27de630f-e1ee-42de-8849-90def4986454
+              responses:
+                '200':
+                  body:
+                    type: Microsoft.WindowsIoT/Services
+                    properties:
+                      adminDomainName: d.e.f
+                      billingDomainName: a.b.c
+                      notes: blah
+                      quantity: 1000000
+                      startDate: '2018-01-01T12:00:00000Z'
+        language:
+          default:
+            name: CreateOrUpdate
+            description: >-
+              Create or update the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values
+              in a new body to update the Windows IoT Device Service.
+            summary: Create or update the metadata of a Windows IoT Device Service.
+          cli:
+            name: CreateOrUpdate
+            description: >-
+              Create or update the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values
+              in a new body to update the Windows IoT Device Service.
+            cli-operation-splitted: true
+            cliKey: CreateOrUpdate
+            split-operation-names:
+              - Create
+              - Update
+        protocol: {}
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+          - &ref_62
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                serializedName: resourceGroupName
+              cli:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                cliKey: resourceGroupName
+            protocol:
+              http:
+                in: path
+          - &ref_63
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                serializedName: deviceName
+              cli:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                cliKey: deviceName
+            protocol:
+              http:
+                in: path
+          - &ref_64
+            schema: *ref_1
+            implementation: Method
+            language:
+              default:
+                name: ifMatch
+                description: ETag of the Windows IoT Device Service. Do not specify for creating a brand new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
+                serializedName: If-Match
+              cli:
+                name: ifMatch
+                description: ETag of the Windows IoT Device Service. Do not specify for creating a brand new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
+                cliKey: If-Match
+            protocol:
+              http:
+                in: header
+        requests:
+          - parameters:
+              - &ref_57
+                schema: *ref_44
+                flattened: true
+                implementation: Method
+                required: true
+                extensions:
+                  x-ms-client-flatten: true
+                language:
+                  default:
+                    name: deviceService
+                    description: The Windows IoT Device Service metadata and security metadata.
+                  cli:
+                    name: deviceService
+                    description: The Windows IoT Device Service metadata and security metadata.
+                    cliKey: deviceService
+                protocol:
+                  http:
+                    in: body
+                    style: json
+              - &ref_58
+                schema: *ref_24
+                implementation: Method
+                originalParameter: *ref_57
+                pathToProperty: []
+                targetProperty: *ref_46
+                language:
+                  default:
+                    name: notes
+                    description: Windows IoT Device Service notes.
+                  cli:
+                    name: notes
+                    description: Windows IoT Device Service notes.
+                    cliKey: notes
+                protocol: {}
+              - &ref_59
+                schema: *ref_26
+                implementation: Method
+                originalParameter: *ref_57
+                pathToProperty: []
+                targetProperty: *ref_47
+                language:
+                  default:
+                    name: quantity
+                    description: 'Windows IoT Device Service device allocation,'
+                  cli:
+                    name: quantity
+                    description: 'Windows IoT Device Service device allocation,'
+                    cliKey: quantity
+                protocol: {}
+              - &ref_60
+                schema: *ref_27
+                implementation: Method
+                originalParameter: *ref_57
+                pathToProperty: []
+                targetProperty: *ref_48
+                language:
+                  default:
+                    name: billingDomainName
+                    description: Windows IoT Device Service ODM AAD domain
+                  cli:
+                    name: billingDomainName
+                    description: Windows IoT Device Service ODM AAD domain
+                    cliKey: billingDomainName
+                protocol: {}
+              - &ref_61
+                schema: *ref_28
+                implementation: Method
+                originalParameter: *ref_57
+                pathToProperty: []
+                targetProperty: *ref_49
+                language:
+                  default:
+                    name: adminDomainName
+                    description: Windows IoT Device Service OEM AAD domain
+                  cli:
+                    name: adminDomainName
+                    description: Windows IoT Device Service OEM AAD domain
+                    cliKey: adminDomainName
+                protocol: {}
+            signatureParameters:
+              - *ref_58
+              - *ref_59
+              - *ref_60
+              - *ref_61
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}'
+                method: patch
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                uri: '{$host}'
+        signatureParameters:
+          - *ref_62
+          - *ref_63
+          - *ref_64
+        responses:
+          - schema: *ref_14
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Service_Update:
+              parameters:
+                api-version: '2019-06-01'
+                deviceName: service8596
+                deviceService:
+                  adminDomainName: d.e.f
+                  billingDomainName: a.b.c
+                  notes: blah
+                  quantity: 1000000
+                monitor: 'true'
+                resourceGroupName: res9407
+                subscriptionId: 45b60d85-fd72-427a-a708-f994d26e593e
+              responses:
+                '200':
+                  body:
+                    type: Microsoft.WindowsIoT/Services
+                    location: westus
+                    properties:
+                      adminDomainName: d.e.f
+                      billingDomainName: a.b.c
+                      notes: blah
+                      quantity: 1000000
+                      startDate: '2018-01-01T12:00:00000Z'
+        language:
+          default:
+            name: Update
+            description: >-
+              Updates the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new
+              body to update the Windows IoT Device Service.
+            summary: Updates the metadata of a Windows IoT Device Service.
+          cli:
+            name: Update
+            description: >-
+              Updates the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new
+              body to update the Windows IoT Device Service.
+            cliKey: Update
+        protocol: {}
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+          - &ref_65
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                serializedName: resourceGroupName
+              cli:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                cliKey: resourceGroupName
+            protocol:
+              http:
+                in: path
+          - &ref_66
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                serializedName: deviceName
+              cli:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                cliKey: deviceName
+            protocol:
+              http:
+                in: path
+        requests:
+          - language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}'
+                method: delete
+                uri: '{$host}'
+        signatureParameters:
+          - *ref_65
+          - *ref_66
+        responses:
+          - schema: *ref_14
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Service_Delete:
+              parameters:
+                api-version: '2019-06-01'
+                deviceName: service2434
+                resourceGroupName: res4228
+                subscriptionId: 27de630f-e1ee-42de-8849-90def4986454
+              responses:
+                '200':
+                  body:
+                    type: Microsoft.WindowsIoT/Services
+                    properties:
+                      adminDomainName: d.e.f
+                      billingDomainName: a.b.c
+                      notes: blah
+                      quantity: 1000000
+                      startDate: '2018-01-01T12:00:00000Z'
+        language:
+          default:
+            name: Delete
+            description: Delete a Windows IoT Device Service.
+          cli:
+            name: Delete
+            description: Delete a Windows IoT Device Service.
+            cliKey: Delete
+        protocol: {}
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+          - &ref_67
+            schema: *ref_1
+            implementation: Method
+            required: true
+            language:
+              default:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                serializedName: resourceGroupName
+              cli:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                cliKey: resourceGroupName
+            protocol:
+              http:
+                in: path
+        requests:
+          - language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices'
+                method: get
+                uri: '{$host}'
+        signatureParameters:
+          - *ref_67
+        responses:
+          - schema: *ref_68
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Service_ListByResourceGroup:
+              parameters:
+                api-version: '2019-06-01'
+                resourceGroupName: res6117
+                subscriptionId: 27de630f-e1ee-42de-8849-90def4986454
+              responses:
+                '200':
+                  body:
+                    value:
+                      - name: service4036
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/res6117/providers/Microsoft.WindowsIoT/Services/service4036
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+                      - name: service4452
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/res6117/providers/Microsoft.WindowsIoT/Services/service4452
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+          x-ms-pageable:
+            nextLinkName: nextLink
+        language:
+          default:
+            name: ListByResourceGroup
+            description: Get all the IoT hubs in a resource group.
+            paging:
+              nextLinkName: nextLink
+          cli:
+            name: ListByResourceGroup
+            description: Get all the IoT hubs in a resource group.
+            cliKey: ListByResourceGroup
+        protocol: {}
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+        requests:
+          - language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: '/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/deviceServices'
+                method: get
+                uri: '{$host}'
+        signatureParameters: []
+        responses:
+          - schema: *ref_68
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Service_List:
+              parameters:
+                api-version: '2019-06-01'
+                subscriptionId: 27de630f-e1ee-42de-8849-90def4986454
+              responses:
+                '200':
+                  body:
+                    value:
+                      - name: service1125
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/res2627/providers/Microsoft.WindowsIoT/Services/service1125
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+                      - name: service3699
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/testcmk3/providers/Microsoft.WindowsIoT/Services/service3699
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+                      - name: service6637
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/testcmk3/providers/Microsoft.WindowsIoT/Services/service6637
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+                      - name: service834
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/res8186/providers/Microsoft.WindowsIoT/Services/service834
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+                      - name: service9174
+                        type: Microsoft.WindowsIoT/Services
+                        id: /subscriptions/27de630f-e1ee-42de-8849-90def4986454/resourceGroups/testcmk3/providers/Microsoft.WindowsIoT/Services/service9174
+                        properties:
+                          adminDomainName: d.e.f
+                          billingDomainName: a.b.c
+                          notes: blah
+                          quantity: 1000000
+                          startDate: '2018-01-01T12:00:00000Z'
+          x-ms-pageable:
+            nextLinkName: nextLink
+        language:
+          default:
+            name: List
+            description: Get all the IoT hubs in a subscription.
+            paging:
+              nextLinkName: nextLink
+          cli:
+            name: List
+            description: Get all the IoT hubs in a subscription.
+            cliKey: List
+        protocol: {}
+      - apiVersions:
+          - version: '2019-06-01'
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+        requests:
+          - parameters:
+              - &ref_70
+                schema: *ref_69
+                flattened: true
+                implementation: Method
+                required: true
+                extensions:
+                  x-ms-client-flatten: true
+                language:
+                  default:
+                    name: deviceServiceCheckNameAvailabilityParameters
+                    description: Set the name parameter in the DeviceServiceCheckNameAvailabilityParameters structure to the name of the Windows IoT Device Service to check.
+                  cli:
+                    name: deviceServiceCheckNameAvailabilityParameters
+                    description: Set the name parameter in the DeviceServiceCheckNameAvailabilityParameters structure to the name of the Windows IoT Device Service to check.
+                    cliKey: deviceServiceCheckNameAvailabilityParameters
+                protocol:
+                  http:
+                    in: body
+                    style: json
+              - &ref_72
+                schema: *ref_30
+                implementation: Method
+                originalParameter: *ref_70
+                pathToProperty: []
+                required: true
+                targetProperty: *ref_71
+                language:
+                  default:
+                    name: name
+                    description: The name of the Windows IoT Device Service to check.
+                  cli:
+                    name: name
+                    description: The name of the Windows IoT Device Service to check.
+                    cliKey: name
+                protocol: {}
+            signatureParameters:
+              - *ref_72
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                path: '/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/checkDeviceServiceNameAvailability'
+                method: post
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                uri: '{$host}'
+        signatureParameters: []
+        responses:
+          - schema: *ref_73
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - '200'
+        exceptions:
+          - schema: *ref_40
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http:
+                knownMediaType: json
+                mediaTypes:
+                  - application/json
+                statusCodes:
+                  - default
+        extensions:
+          x-ms-examples:
+            Service_CheckNameAvailability:
+              parameters:
+                api-version: '2019-06-01'
+                deviceServiceCheckNameAvailabilityParameters:
+                  name: service3363
+                subscriptionId: 27de630f-e1ee-42de-8849-90def4986454
+              responses:
+                '200':
+                  body:
+                    nameAvailable: true
+        language:
+          default:
+            name: CheckDeviceServiceNameAvailability
+            description: Check if a Windows IoT Device Service name is available.
+          cli:
+            name: CheckDeviceServiceNameAvailability
+            description: Check if a Windows IoT Device Service name is available.
+            cliKey: CheckDeviceServiceNameAvailability
+        protocol: {}
+      - apiVersions: *ref_74
+        parameters:
+          - *ref_37
+          - *ref_38
+          - *ref_41
+          - &ref_85
+            schema: *ref_1
+            implementation: Method
+            required: true
+            extensions: {}
+            language:
+              default:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                serializedName: resourceGroupName
+              cli:
+                name: resourceGroupName
+                description: The name of the resource group that contains the Windows IoT Device Service.
+                cliKey: resourceGroupName
+            protocol:
+              http: *ref_75
+          - &ref_86
+            schema: *ref_1
+            implementation: Method
+            required: true
+            extensions: {}
+            language:
+              default:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                serializedName: deviceName
+              cli:
+                name: deviceName
+                description: The name of the Windows IoT Device Service.
+                cliKey: deviceName
+            protocol:
+              http: *ref_76
+          - &ref_87
+            schema: *ref_1
+            implementation: Method
+            extensions: {}
+            language:
+              default:
+                name: ifMatch
+                description: ETag of the Windows IoT Device Service. Do not specify for creating a new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
+                serializedName: If-Match
+              cli:
+                name: ifMatch
+                description: ETag of the Windows IoT Device Service. Do not specify for creating a new Windows IoT Device Service. Required to update an existing Windows IoT Device Service.
+                cliKey: If-Match
+            protocol:
+              http: *ref_77
+        requests:
+          - parameters:
+              - &ref_79
+                schema: *ref_44
+                flattened: true
+                implementation: Method
+                required: true
+                extensions:
+                  x-ms-client-flatten: true
+                language:
+                  default:
+                    name: deviceService
+                    description: The Windows IoT Device Service metadata and security metadata.
+                  cli:
+                    name: deviceService
+                    description: The Windows IoT Device Service metadata and security metadata.
+                    cliKey: deviceService
+                protocol:
+                  http: *ref_78
+              - &ref_80
+                schema: *ref_24
+                implementation: Method
+                originalParameter: *ref_79
+                pathToProperty: []
+                targetProperty: *ref_46
+                language:
+                  default:
+                    name: notes
+                    description: Windows IoT Device Service notes.
+                  cli:
+                    name: notes
+                    description: Windows IoT Device Service notes.
+                    cliKey: notes
+                protocol: {}
+              - &ref_81
+                schema: *ref_26
+                implementation: Method
+                originalParameter: *ref_79
+                pathToProperty: []
+                targetProperty: *ref_47
+                language:
+                  default:
+                    name: quantity
+                    description: 'Windows IoT Device Service device allocation,'
+                  cli:
+                    name: quantity
+                    description: 'Windows IoT Device Service device allocation,'
+                    cliKey: quantity
+                protocol: {}
+              - &ref_82
+                schema: *ref_27
+                implementation: Method
+                originalParameter: *ref_79
+                pathToProperty: []
+                targetProperty: *ref_48
+                language:
+                  default:
+                    name: billingDomainName
+                    description: Windows IoT Device Service ODM AAD domain
+                  cli:
+                    name: billingDomainName
+                    description: Windows IoT Device Service ODM AAD domain
+                    cliKey: billingDomainName
+                protocol: {}
+              - &ref_83
+                schema: *ref_28
+                implementation: Method
+                originalParameter: *ref_79
+                pathToProperty: []
+                targetProperty: *ref_49
+                language:
+                  default:
+                    name: adminDomainName
+                    description: Windows IoT Device Service OEM AAD domain
+                  cli:
+                    name: adminDomainName
+                    description: Windows IoT Device Service OEM AAD domain
+                    cliKey: adminDomainName
+                protocol: {}
+            signatureParameters:
+              - *ref_80
+              - *ref_81
+              - *ref_82
+              - *ref_83
+            language:
+              default:
+                name: ''
+                description: ''
+            protocol:
+              http: *ref_84
+        signatureParameters:
+          - *ref_85
+          - *ref_86
+          - *ref_87
+        responses: *ref_88
+        exceptions: *ref_89
+        extensions:
+          cli-split-operation-original-operation: *ref_90
+          x-ms-examples: *ref_91
+        language:
+          default:
+            name: Create
+            description: >-
+              Create or update the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values
+              in a new body to update the Windows IoT Device Service.
+            summary: Create or update the metadata of a Windows IoT Device Service.
+          cli:
+            name: Create
+            description: >-
+              Create or update the metadata of a Windows IoT Device Service. The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values
+              in a new body to update the Windows IoT Device Service.
+            cliKey: 'CreateOrUpdate#Create'
+        protocol: {}
+    language:
+      default:
+        name: Service
+        description: ''
+      cli:
+        name: Service
+        description: ''
+        cliKey: Services
+    protocol: {}
+security:
+  authenticationRequired: true
+language:
+  default:
+    name: DeviceServices
+    description: ''
+  cli:
+    name: DeviceServices
+    description: ''
+protocol:
+  http: {}

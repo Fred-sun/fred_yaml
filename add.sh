@@ -1,5 +1,5 @@
-echo "Hello World"
+echo "test"
+echo "pass"
 echo $1
-echo $2
 echo "Hello World"
 echo "Hello World"

@@ -1,0 +1,17 @@
+---
+- name: for test
+  hosts: localhost
+  connection: local
+  collections:
+    - azure.azcollection
+  vars:
+    resource_group: v-xisuRG
+  tasks:
+    #- include: main.yml
+    - name: Get work space info
+      azure_rm_workspace_info:
+        resource_group_name: v-xisuRG
+        workspace_collection_name: fredtest
+      register: output
+    - debug: 
+        var: output

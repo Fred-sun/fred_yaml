@@ -1,0 +1,12 @@
+plugin: azure_rm
+collections:
+  - azure.azcollection
+include_vm_resource_group:
+  - v-xisuRG03
+  #- v-xisuRG01
+#  - v-xisuRG02
+auth_source: auto
+#auth_source: auto
+keyed_groups:
+  - prefix: tag
+    key: tags
