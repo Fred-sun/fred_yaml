@@ -1,0 +1,40 @@
+---
+- name: for test
+  hosts: localhost
+  connection: lcoal
+  collections:
+    - azure.azcollection
+  vars:
+    resource_group: v-xisuRG
+  tasks:
+    - set_fact:
+        test:  "{{ lookup('file', 'docker-compose.yml') | b64decode }}"
+      tags: fred
+    - debug:
+        var: test
+      tags: fred
+
+    - debug:
+        var:  lookup('file', 'docker-compose.yml') | b64encode
+        #var:  "COMPOSE{{ lookup('file', 'docker-compose.yml') | b64encode }}"
+      tags: fred02
+
+    - name: Create a multi-container web app
+      azure_rm_webapp:
+        resource_group: v-xisuRG
+        name: myMultiContainerWebapp05
+        plan:
+          name: myAppServicePlan05
+          resource_group: v-xisuRG
+          is_linux: true
+          sku: S1
+          number_of_workers: 1
+        app_settings:
+          testkey: testvalue
+        container_settings:
+          #name: COMPOSEtest01
+          name: COMPOSE{{ lookup('file', 'docker-compose.yml') | b64decode }}
+      register: output
+    - debug:
+        var: output
+
