@@ -222,7 +222,7 @@ registration_assignments:
 from ansible_collections.azure.azcollection.plugins.module_utils.azure_rm_common_ext import AzureRMModuleBase
 try:
     from msrestazure.azure_exceptions import CloudError
-    from azure.mgmt.managed import ManagedServicesClient
+    from azure.mgmt.managedservices import ManagedServicesClient
     from msrestazure.azure_operation import AzureOperationPoller
     from msrest.polling import LROPoller
 except ImportError:
@@ -256,11 +256,6 @@ class AzureRMRegistrationAssignmentInfo(AzureRMModuleBase):
         self.url = None
         self.status_code = [200]
 
-        self.query_parameters = {}
-        self.query_parameters['api-version'] = '2020-02-01-preview'
-        self.header_parameters = {}
-        self.header_parameters['Content-Type'] = 'application/json; charset=utf-8'
-
         self.mgmt_client = None
         super(AzureRMRegistrationAssignmentInfo, self).__init__(self.module_arg_spec, supports_tags=True)
 
@@ -273,8 +268,7 @@ class AzureRMRegistrationAssignmentInfo(AzureRMModuleBase):
                                                     base_url=self._cloud_environment.endpoints.resource_manager,
                                                     api_version='2020-02-01-preview')
 
-        if (self.scope is not None and
-            self.registration_assignment_id is not None):
+        if (self.scope is not None and self.registration_assignment_id is not None):
             self.results['registration_assignments'] = self.format_item(self.get())
         elif (self.scope is not None):
             self.results['registration_assignments'] = self.format_item(self.list())
@@ -287,7 +281,7 @@ class AzureRMRegistrationAssignmentInfo(AzureRMModuleBase):
             response = self.mgmt_client.registration_assignments.get(scope=self.scope,
                                                                      registration_assignment_id=self.registration_assignment_id,
                                                                      expand_registration_definition=self.expand_registration_definition)
-        except CloudError as e:
+        except Exception as e:
             self.log('Could not get info for @(Model.ModuleOperationNameUpper).')
 
         return response
@@ -298,7 +292,7 @@ class AzureRMRegistrationAssignmentInfo(AzureRMModuleBase):
         try:
             response = self.mgmt_client.registration_assignments.list(scope=self.scope,
                                                                       expand_registration_definition=self.expand_registration_definition)
-        except CloudError as e:
+        except Exception as e:
             self.log('Could not get info for @(Model.ModuleOperationNameUpper).')
 
         return response

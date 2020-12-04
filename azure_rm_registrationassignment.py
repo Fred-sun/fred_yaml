@@ -41,6 +41,7 @@ options:
     description:
       - Properties of a registration assignment.
     type: dict
+    required: true
     suboptions:
       registration_definition_id:
         description:
@@ -195,11 +196,11 @@ name:
   sample: null
 
 '''
-
+import uuid
 from ansible_collections.azure.azcollection.plugins.module_utils.azure_rm_common_ext import AzureRMModuleBaseExt
 try:
     from msrestazure.azure_exceptions import CloudError
-    from azure.mgmt.managedservice import ManagedServicesClient
+    from azure.mgmt.managedservices import ManagedServicesClient
     from msrestazure.azure_operation import AzureOperationPoller
     from msrest.polling import LROPoller
 except ImportError:
@@ -220,7 +221,6 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
             ),
             registration_assignment_id=dict(
                 type='str',
-                required=True
             ),
             expand_registration_definition=dict(
                 type='bool'
@@ -282,7 +282,7 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
 
         self.scope = None
         self.registration_assignment_id = None
-        self.expand_registration_definition = None
+        #self.expand_registration_definition = None
         self.body = {}
 
         self.results = dict(changed=False)
@@ -305,6 +305,8 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
 
         old_response = None
         response = None
+        if self.registration_assignment_id is None:
+            self.registration_assignment_id = str(uuid.uuid4())
 
         self.mgmt_client = self.get_mgmt_svc_client(ManagedServicesClient,
                                                     base_url=self._cloud_environment.endpoints.resource_manager,
@@ -331,6 +333,7 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
             if self.check_mode:
                 return self.results
             response = self.create_update_resource()
+            self.results['state'] = response
         elif self.to_do == Actions.Delete:
             self.results['changed'] = True
             if self.check_mode:
@@ -339,6 +342,7 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
         else:
             self.results['changed'] = False
             response = old_response
+            self.results['state'] = response
 
         return self.results
 
@@ -346,6 +350,7 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
         try:
             response = self.mgmt_client.registration_assignments.create_or_update(scope=self.scope,
                                                                                   registration_assignment_id=self.registration_assignment_id,
+                                                                                  properties=self.body.get('properties', None),
                                                                                   request_body=self.body)
             if isinstance(response, AzureOperationPoller) or isinstance(response, LROPoller):
                 response = self.get_poller_result(response)
@@ -368,8 +373,9 @@ class AzureRMRegistrationAssignment(AzureRMModuleBaseExt):
         try:
             response = self.mgmt_client.registration_assignments.get(scope=self.scope,
                                                                      registration_assignment_id=self.registration_assignment_id,
-                                                                     expand_registration_definition=self.expand_registration_definition)
-        except CloudError as e:
+                                                                     expand_registration_definition=self.body.get('expand_registration_definition', True))
+        except Exception as e:
+        #except CloudError as e:
             return False
         return response.as_dict()
 
