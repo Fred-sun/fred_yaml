@@ -1,0 +1,4 @@
+INFO:root:111
+INFO:root:<azure.mgmt.powerbiembedded.operations.workspaces_operations.WorkspacesOperations object at 0x7f79bfc99b38>
+INFO:root:[]
+INFO:root:<class 'azure.mgmt.powerbiembedded.models.workspace_paged.WorkspacePaged'>

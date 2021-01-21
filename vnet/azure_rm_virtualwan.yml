@@ -1,0 +1,51 @@
+ - name: Create a VirtualWan
+   azure_rm_virtualwan:
+     resource_group_name: v-xisuRG
+     virtual_wan_name: my_virtual_wan_name
+     location: eastus
+     disable_vpn_encryption: true
+     allow_branch_to_branch_traffic: true
+     allow_vnet_to_vnet_traffic: true
+     type_properties_type: standard
+   
+   tags: fred
+   register: output
+ - debug:
+     var: output
+ - name: Get VirtualWan info
+   azure_rm_virtualwan_info:
+     resource_group_name: v-xisuRG
+     virtual_wan_name: my_virtual_wan_name
+   tags: fred01
+   register: output
+ - debug: 
+     var: output
+   tags: fred01
+
+ - name: Update the VirtualWan (no change)
+   azure_rm_virtualwan:
+     resource_group_name: v-xisuRG
+     virtual_wan_name: my_virtual_wan_name
+     disable_vpn_encryption: true
+     allow_branch_to_branch_traffic: False
+     location: eastus
+     allow_vnet_to_vnet_traffic: true
+     type_properties_type: standard
+
+ - name: Get VirtualWan info
+   azure_rm_virtualwan_info:
+     resource_group_name: v-xisuRG
+     virtual_wan_name: my_virtual_wan_name
+   tags: fred01
+   register: output
+ - debug: 
+     var: output
+   tags: fred01
+   
+ - name: Delete the VirtualWan
+   azure_rm_virtualwan:
+     resource_group_name: v-xisuRG
+     virtual_wan_name: my_virtual_wan_name
+     location: eastus
+     state: absent
+   

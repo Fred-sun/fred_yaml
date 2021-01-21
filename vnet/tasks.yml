@@ -1,0 +1,10 @@
+---
+- name: for test
+  hosts: localhost
+  connection: local
+  collections:
+    - azure.azcollection
+  vars:
+    resource_group: v-xisuRG
+  tasks:
+    - include: azure_rm_virtualwan.yml

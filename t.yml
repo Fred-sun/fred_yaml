@@ -1,0 +1,10 @@
+---
+- name: for test
+  hosts: localhost
+  connection: local
+  collections:
+    - azure.azcollection
+  vars:
+    subscription_id: f64d4ee8-be94-457d-ba26-3fa6b6506cef
+  tasks:
+    - include: main2.yml
