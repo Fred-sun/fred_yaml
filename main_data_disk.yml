@@ -1,0 +1,76 @@
+- name: Creat a manged disk
+  azure_rm_manageddisk:
+    name: mydisk
+    location: eastus
+    resource_group: v-xisuRG
+    disk_size_gb: 4
+  register: output
+  tags: fredd
+- debug:
+    var: output
+  tags: fredd
+
+- name: SETUP | Create storage account
+  azure_rm_storageaccount:
+    resource_group: "{{ resource_group }}"
+    name: "{{ storage_account }}"
+    account_type: Standard_LRS
+
+#- name: SETUP | Create availability set
+#  azure_rm_availabilityset:
+#    name: "{{ availability_set }}"
+#    resource_group: "{{ resource_group }}"
+
+- name: SETUP | Create virtual network
+  azure_rm_virtualnetwork:
+    resource_group: "{{ resource_group }}"
+    name: "{{ network_name }}"
+    address_prefixes: "{{ network }}"
+
+- name: SETUP | Create subnet
+  azure_rm_subnet:
+    resource_group: "{{ resource_group }}"
+    name: "{{ subnet_name }}"
+    address_prefix: "{{ subnet }}"
+    virtual_network: "{{ network_name }}"
+
+- name: Create NICs for VM 
+  azure_rm_networkinterface:
+    resource_group: "{{ resource_group }}"
+    name: "{{ nic }}"
+    virtual_network: "{{ network_name }}"
+    subnet: "{{ subnet_name }}"
+
+- name: Create virtual machine with NIC
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource_group }}" 
+    vm_name: "{{ vm_name }}"
+    storage_profile:
+      data_disk:
+        - create_option: Empty
+          disk_size_gb: 1023
+      image_reference:
+        offer: UbuntuServer
+        publisher: Canonical
+        sku: 16.04-LTS
+        version: latest
+    network_profile: 
+      network_interfaces:
+        - id: /subscriptions/f64d4ee8-be94-457d-ba26-3fa6b6506cef/resourceGroups/v-xisuRG02/providers/Microsoft.Network/networkInterfaces/nic01
+          primary: True
+    hardware_profile:
+      vm_size: Standard_A0
+    os_profile:
+      admin_username: testuser
+      linux_configuration:
+        disable_password_authentication: True
+        ssh:
+          public_keys:
+            - path: /home/testuser/.ssh/authorized_keys
+              key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfoYlIV4lTPZTv7hXaVwQQuqBgGs4yeNRX0SPo2+HQt9u4X7IGwrtXc0nEUm6LfaCikMH58bOL8f20NTGz285kxdFHZRcBXtqmnMz2rXwhK9gwq5h1khc+GzHtdcJXsGA4y0xuaNcidcg04jxAlN/06fwb/VYwwWTVbypNC0gpGEpWckCNm8vlDlA55sU5et0SZ+J0RKVvEaweUOeNbFZqckGPA384imfeYlADppK/7eAxqfBVadVvZG8IJk4yvATgaIENIFj2cXxqu2mQ/Bp5Wr45uApvJsFXmi+v/nkiOEV1QpLOnEwAZo6EfFS4CCQtsymxJCl1PxdJ5LD4ZOtP xiuxi.sun@qq.com"
+      computer_name: testvm
+      #os_type: Linux
+      #os_disk_size_gb: 64
+    tags:
+      abc: def
+
