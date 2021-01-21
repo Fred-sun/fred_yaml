@@ -1,0 +1,85 @@
+- name: set facts
+  set_fact:
+     subscription_id: "{{ azure_subscription_id }}"
+     subscription_sec_id: "{{ azure_subscription_sec_id }}"
+     managed_by_tenant_id: "{{ azure_managed_by_tenant_id }}"
+     principal_id: "{{ azure_principal_id }}"
+     role_definition_id: "{{ azure_role_definition_id }}"
+     reg_def_name: test_name
+     registration_definition_id: 182973c7-a90a-4220-a504-8c6a20eefd00
+  run_once: yes
+
+- name: Create a RegistrationDefinition -- check mode
+  azure_rm_registrationdefinition:
+    scope:  subscriptions/{{ subscription_id }}
+    registration_definition_id: "{{ registration_definition_id }}"
+    properties:
+      description: first_test
+      authorizations:
+        - principal_id: "{{ principal_id }}"
+          role_definition_id: "{{ role_definition_id }}"
+      managed_by_tenant_id: "{{ managed_by_tenant_id }}"
+      name: "{{ reg_def_name }}"
+  check_mode: yes
+  register: output
+
+- name: Create a RegistrationDefinition with scope
+  azure_rm_registrationdefinition:
+    scope:  subscriptions/{{ subscription_id }}
+    registration_definition_id: "{{ registration_definition_id }}"
+    properties:
+      description: test definition with scope
+      authorizations:
+        - principal_id: "{{ principal_id }}"
+          role_definition_id: "{{ role_definition_id }}"
+      managed_by_tenant_id: "{{ managed_by_tenant_id }}"
+      name: "{{ reg_def_name }}"
+  register: output
+
+- name: Create a RegistrationDefinition (idempotent)
+  azure_rm_registrationdefinition:
+    registration_definition_id: "{{ registration_definition_id }}"
+    scope:  subscriptions/{{ subscription_id }}
+    properties:
+      description: first_test
+      authorizations:
+        - principal_id: "{{ principal_id }}"
+          role_definition_id: "{{ role_definition_id }}"
+      managed_by_tenant_id: "{{ managed_by_tenant_id }}"
+      name: "{{ reg_def_name }}"
+  register: output
+
+
+- name: Update the RegistrationDefinition properties description and name
+  azure_rm_registrationdefinition:
+    registration_definition_id: "{{ registration_definition_id }}"
+    scope:  subscriptions/{{ subscription_id }}
+    properties:
+      description: second_test
+      authorizations:
+        - principal_id: "{{ principal_id }}"
+          role_definition_id: "{{ role_definition_id }}"
+      managed_by_tenant_id: "{{ managed_by_tenant_id }}"
+      name: "{{ reg_def_name }}02"
+  register: output
+
+- name: Get the Registration Definition info
+  azure_rm_registrationdefinition_info:
+    registration_definition_id: "{{ registration_definition_id }}"
+  register: output
+
+- name: Get All Registration Definition info in the subscription
+  azure_rm_registrationdefinition_info:
+    scope:  subscriptions/{{ subscription_id }}
+  register: output
+
+- name: Delete the registration definition
+  azure_rm_registrationdefinition:
+    registration_definition_id: "{{ registration_definition_id }}"
+    state: absent
+  register: output
+
+- name: Delete the registration definition
+  azure_rm_registrationdefinition:
+    registration_definition_id: "{{ registration_definition_id }}"
+    state: absent
