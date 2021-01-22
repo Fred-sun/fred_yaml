@@ -6,6 +6,3 @@ do
     autorest --ansible --use=./  "$item"/resource-manager/readme.md  --log --ansible-output-folder=../tmp
 done
 echo " For test"
-echo " For test"
-
-
