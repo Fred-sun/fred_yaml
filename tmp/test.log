@@ -1,0 +1,2 @@
+autorest --ansible --use=./  ~/azure-rest-api-specs/specification/compute/resource-manager/readme.md  --log --ansible-output-folder=./tmp
+
