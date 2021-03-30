@@ -3,6 +3,12 @@ for item in "$path_dir"/*
 do
     echo "$path_dir"
     echo "$path_dir"
+    echo "$path_dir"
+    echo "$path_dir"
+    echo "$path_dir"
+    echo "$path_dir"
+    echo "$path_dir"
+    echo "$path_dir"
     echo "$item"
     autorest --ansible --use=./  "$item"/resource-manager/readme.md  --log --ansible-output-folder=../tmp
 done
