@@ -7,11 +7,11 @@ from email.header import Header
 # 用于构建邮件头
   
 # 发信方的信息：发信邮箱，QQ 邮箱授权码
-from_addr = 'xiuxi.sun@qq.com'
-password = 'vjmbkrfrsmoubddj'
+from_addr = '*************@qq.com'
+password = '**************'
   
 # 收信方邮箱
-to_addr = ['v-cheye@microsoft.com', 'xiuxi.sun@qq.com']
+to_addr = ['XXXXXXXXX', '********@qq.com']
     
 # 发信服务器
 smtp_server = 'smtp.qq.com'
